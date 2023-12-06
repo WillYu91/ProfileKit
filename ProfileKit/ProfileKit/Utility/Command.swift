@@ -9,17 +9,19 @@
 import Foundation
 
 public class Command {
-    public static func run(path: String, arguments: [String]?) throws -> Data {
-        let task = Process()
-        let stdOutPipe = Pipe()
-
-        task.launchPath = path
-        task.arguments = arguments
-        task.standardOutput = stdOutPipe
-
-        try task.run()
-
-        return stdOutPipe.fileHandleForReading.readDataToEndOfFile()
+    public static func run(path: String, arguments: [String]?) async throws -> Data {
+        return try await Task {
+            let task = Process()
+            let stdOutPipe = Pipe()
+            
+            task.launchPath = path
+            task.arguments = arguments
+            task.standardOutput = stdOutPipe
+            
+            try task.run()
+            
+            return stdOutPipe.fileHandleForReading.readDataToEndOfFile()
+        }.value
     }
 
     public static func plistFromOutputStringData(_ data: Data) throws -> [String: Any]? {

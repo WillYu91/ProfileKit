@@ -9,25 +9,21 @@
 import Foundation
 
 public struct InstalledProfiles {
-    public static func all() throws -> [String: [[String: Any]]]? {
+    public static func all() async throws -> [String: [[String: Any]]] {
         var allProfiles = [String: [[String: Any]]]()
 
-        let mdmClientOutput = try MDMClientCommand.installedProfiles()
-        let profilesOutput = try ProfilesCommand.show()
+        let profilesOutput = try await ProfilesCommand.show()
 
         for scope in [Scope.system.rawValue, Scope.user.rawValue] {
             var scopeProfiles = [[String: Any]]()
 
-            // Get all mdmclient profiles for scope, if none were found add any profiles from the profiles command in the current scope.
-            guard let mdmClientScopeProfiles = mdmClientOutput[scope] else {
-                if let profilesScopeProfiles = profilesOutput[scope] {
-                    allProfiles[scope] = profilesScopeProfiles
-                }
+            // Get all profiles for scope.
+            guard let profilesScopeProfiles = profilesOutput[scope] else {
                 continue
             }
 
-            // Loop through all mdmclient profiles
-            for profile in mdmClientScopeProfiles {
+            // Loop through all profiles
+            for profile in profilesScopeProfiles {
                 guard let uuid = profile[InstalledProfileKey.payloadUUID.rawValue] as? String else {
 
                     // FIXME: Proper Logging
@@ -35,20 +31,8 @@ public struct InstalledProfiles {
                     continue
                 }
 
-                var scopeProfile = profile
-
-                // Get the index for a profile from the profiles command with the same uuid as the mdmclient profile
-                if
-                    var profilesScopeProfiles = profilesOutput[scope],
-                    let index = profilesScopeProfiles.firstIndex(where: { $0[InstalledProfileKey.payloadUUID.rawValue] as? String == uuid }) {
-
-                    // Merge the two profiles with key/values from the mdmclient profile taking precedence if there are duplicates
-                    let profilesScopeProfile = profilesScopeProfiles.remove(at: index)
-                    scopeProfile = profile.merging(profilesScopeProfile, uniquingKeysWith: self.mergingProfileContents)
-                }
-
                 // Update possible missing payload data for certain payloads
-                scopeProfile = self.updatePayloadContent(in: scopeProfile)
+                let scopeProfile = self.updatePayloadContent(in: profile)
 
                 // Add finished profile to the scopeProfiles array
                 scopeProfiles.append(scopeProfile)

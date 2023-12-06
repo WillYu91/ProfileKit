@@ -9,7 +9,7 @@
 import Foundation
 
 public extension ProfilesCommand {
-    static func show() throws -> [String: [[String: Any]]] {
+    static func show() async throws -> [String: [[String: Any]]] {
         var installedProfiles = [String: [[String: Any]]]()
 
         // Set the default arguments for the command
@@ -19,7 +19,7 @@ public extension ProfilesCommand {
         if getuid() == 0 { args.append("--all") }
 
         // Run the command show
-        let data = try Command.run(path: self.path, arguments: args)
+        let data = try await Command.run(path: self.path, arguments: args)
 
         // Convert the output to a dictionary
         guard let plist = try Command.plistFromOutputStringData(data) as? [String: [[String: Any]]] else {

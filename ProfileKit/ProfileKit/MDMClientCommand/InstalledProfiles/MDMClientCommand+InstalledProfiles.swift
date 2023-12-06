@@ -9,11 +9,11 @@
 import Foundation
 
 public extension MDMClientCommand {
-    static func installedProfiles() throws -> [String: [[String: Any]]] {
+    static func installedProfiles() async throws -> [String: [[String: Any]]] {
         var installedProfiles = [String: [[String: Any]]]()
 
         // Run the command QueryInstalledProfiles
-        let data = try Command.run(path: self.path, arguments: ["QueryInstalledProfiles"])
+        let data = try await Command.run(path: self.path, arguments: ["QueryInstalledProfiles"])
 
         // Parse the returned data line by line
         if let lineReader = LineReader(data: data) {
