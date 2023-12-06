@@ -23,8 +23,8 @@ public class ManifestSubkey {
     // MARK: Variables Optional
 
     public var allowedFileTypes: [String]?
-    public var allowCustomValue: Bool = false
-    public var allowPastDates: Bool = false
+    public var allowCustomValue = false
+    public var allowPastDates = false
     public var appDeprecated: String?
     public var appMax: String?
     public var appMin: String?
@@ -36,9 +36,9 @@ public class ManifestSubkey {
     public var descriptionExtended: String?
     public var descriptionReference: String?
     public var documentationURL: String?
-    public var enabled: Bool = false
+    public var enabled = false
     public var exclude: [[String: Any]]?
-    public var excluded: Bool = false
+    public var excluded = false
     public var format: String?
     public var hidden: ManifestSubkey.Hidden = .no
     public var importProcessor: String?
@@ -58,11 +58,11 @@ public class ManifestSubkey {
     public var rangeMax: Any?
     public var rangeMin: Any?
     public var require: ManifestSubkey.Require = .optional
-    public var required: Bool = false
-    public var requireSupervision: Bool = false
-    public var requireUserApprovedMDM: Bool = false
+    public var required = false
+    public var requireSupervision = false
+    public var requireUserApprovedMDM = false
     public var segments: [String: [String]]?
-    public var sensitive: Bool = false
+    public var sensitive = false
     public var subkeys = [ManifestSubkey]()
     public var substitutionVariables: [String: [String: String]]?
     public var targets: [String]?
@@ -73,9 +73,9 @@ public class ManifestSubkey {
     public var typeInput: String?
     public var valueCopyTarget: String?
     public var valueDecimalPlaces: Int?
-    public var valueInverted: Bool = false
+    public var valueInverted = false
     public var valueProcessor: String?
-    public var valueUnique: Bool = false
+    public var valueUnique = false
     public var valueUnit: String?
     public var view: String?
 
@@ -83,7 +83,7 @@ public class ManifestSubkey {
     // MARK: Variables Externally set/Generated
 
     public var subkeyParent: ManifestSubkey?
-    public var isSinglePayloadContent: Bool = false
+    public var isSinglePayloadContent = false
 
     // MARK: -
     // MARK: Initialization

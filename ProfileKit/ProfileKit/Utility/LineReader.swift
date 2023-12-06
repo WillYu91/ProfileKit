@@ -1,6 +1,6 @@
 //
 //  LineReader.swift
-//  Profiles
+//  ProfileKit
 //
 //  Created by Erik Berglund.
 //  Copyright © 2019 Erik Berglund. All rights reserved.
@@ -48,8 +48,8 @@ class LineReader {
 
         var lineData: Data?
 
-        self.rawData.withUnsafeBytes { (u8Ptr: UnsafePointer<UInt8>) in
-            let rawDataPtr = UnsafeMutableRawPointer(mutating: u8Ptr)
+        self.rawData.withUnsafeBytes { (u8Ptr: UnsafeRawBufferPointer) in
+            let rawDataPtr = UnsafeMutableRawPointer(mutating: u8Ptr.baseAddress!)
 
             // Read data chunks until a line delimiter is found
             while !self.atEOF {
