@@ -2,7 +2,7 @@
 //  Profiles.h
 //  Profiles
 //
-//  Created by Erik Berglund on 2019-04-27.
+//  Created by Erik Berglund.
 //  Copyright © 2019 Erik Berglund. All rights reserved.
 //
 
