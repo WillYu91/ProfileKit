@@ -3,30 +3,13 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 60;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1733673A2B205700005D4D87 /* ProfileKit in Frameworks */ = {isa = PBXBuildFile; productRef = 173367392B205700005D4D87 /* ProfileKit */; };
 		533064492279765000692D0F /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 533064482279765000692D0F /* main.swift */; };
-		533064562279767800692D0F /* ProfileKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 533064552279766C00692D0F /* ProfileKit.framework */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		533064542279766C00692D0F /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 533064502279766C00692D0F /* ProfileKit.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 534B03172274602F008641DA;
-			remoteInfo = ProfileKit;
-		};
-		533064572279767C00692D0F /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 533064502279766C00692D0F /* ProfileKit.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 534B03162274602F008641DA;
-			remoteInfo = ProfileKit;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		533064432279765000692D0F /* CopyFiles */ = {
@@ -43,7 +26,6 @@
 /* Begin PBXFileReference section */
 		533064452279765000692D0F /* ProfileKitExample */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ProfileKitExample; sourceTree = BUILT_PRODUCTS_DIR; };
 		533064482279765000692D0F /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
-		533064502279766C00692D0F /* ProfileKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ProfileKit.xcodeproj; path = ../ProfileKit/ProfileKit.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,7 +33,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				533064562279767800692D0F /* ProfileKit.framework in Frameworks */,
+				1733673A2B205700005D4D87 /* ProfileKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -62,7 +44,6 @@
 			isa = PBXGroup;
 			children = (
 				533064472279765000692D0F /* ProfileKitExample */,
-				5330644F2279766400692D0F /* Frameworks */,
 				533064462279765000692D0F /* Products */,
 			);
 			sourceTree = "<group>";
@@ -83,22 +64,6 @@
 			path = ProfileKitExample;
 			sourceTree = "<group>";
 		};
-		5330644F2279766400692D0F /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				533064502279766C00692D0F /* ProfileKit.xcodeproj */,
-			);
-			path = Frameworks;
-			sourceTree = "<group>";
-		};
-		533064512279766C00692D0F /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				533064552279766C00692D0F /* ProfileKit.framework */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -113,9 +78,11 @@
 			buildRules = (
 			);
 			dependencies = (
-				533064582279767C00692D0F /* PBXTargetDependency */,
 			);
 			name = ProfileKitExample;
+			packageProductDependencies = (
+				173367392B205700005D4D87 /* ProfileKit */,
+			);
 			productName = ProfileKitExample;
 			productReference = 533064452279765000692D0F /* ProfileKitExample */;
 			productType = "com.apple.product-type.tool";
@@ -143,30 +110,17 @@
 				en,
 			);
 			mainGroup = 5330643C2279765000692D0F;
+			packageReferences = (
+				173367382B205700005D4D87 /* XCLocalSwiftPackageReference ".." */,
+			);
 			productRefGroup = 533064462279765000692D0F /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = 533064512279766C00692D0F /* Products */;
-					ProjectRef = 533064502279766C00692D0F /* ProfileKit.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				533064442279765000692D0F /* ProfileKitExample */,
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		533064552279766C00692D0F /* ProfileKit.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = ProfileKit.framework;
-			remoteRef = 533064542279766C00692D0F /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXSourcesBuildPhase section */
 		533064412279765000692D0F /* Sources */ = {
@@ -178,14 +132,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		533064582279767C00692D0F /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = ProfileKit;
-			targetProxy = 533064572279767C00692D0F /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		5330644A2279765000692D0F /* Debug */ = {
@@ -239,7 +185,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -294,7 +240,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = macosx;
@@ -307,7 +253,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 			};
@@ -317,7 +263,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 			};
@@ -345,6 +291,20 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCLocalSwiftPackageReference section */
+		173367382B205700005D4D87 /* XCLocalSwiftPackageReference ".." */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = ..;
+		};
+/* End XCLocalSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		173367392B205700005D4D87 /* ProfileKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = ProfileKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 5330643D2279765000692D0F /* Project object */;
 }
