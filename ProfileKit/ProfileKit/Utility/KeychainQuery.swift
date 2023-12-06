@@ -2,7 +2,7 @@
 //  KeychainQuery.swift
 //  ProfileKit
 //
-//  Created by Erik Berglund on 2019-05-02.
+//  Created by Erik Berglund.
 //  Copyright © 2019 Erik Berglund. All rights reserved.
 //
 

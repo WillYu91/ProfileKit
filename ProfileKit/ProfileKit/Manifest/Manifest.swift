@@ -45,8 +45,8 @@ public class Manifest {
     public var macOSMin: String?
     public var note: String?
     public var override: String?
-    public var requireSupervision: Bool = false
-    public var requireUserApprovedMDM: Bool = false
+    public var requireSupervision = false
+    public var requireUserApprovedMDM = false
     public var subdomain: String?
     public var substitutionVariables: [String: [String: String]]?
     public var subkeys = [ManifestSubkey]()
@@ -59,7 +59,7 @@ public class Manifest {
     // MARK: Variables Externally set/Generated
 
     public var category: Manifest.Category = .unknown
-    public var hasOverride: Bool = false
+    public var hasOverride = false
     public var manifestDict: [String: Any]?
     public var manifestURL: URL?
     public var manifestOverride: [String: Any]?

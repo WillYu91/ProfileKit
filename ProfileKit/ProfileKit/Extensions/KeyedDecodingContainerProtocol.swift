@@ -1,6 +1,6 @@
 //
 //  KeyedDecodingContainerProtocol.swift
-//  Profiles
+//  ProfileKit
 //
 //  Created by Erik Berglund.
 //  Copyright © 2019 Erik Berglund. All rights reserved.
@@ -88,11 +88,9 @@ public extension KeyedDecodingContainerProtocol {
     func decodeMap<T>(_ type: T.Type, excludedKeys: Set<Self.Key>) throws -> [Self.Key: T] where T: Decodable {
         var map: [Self.Key: T] = [:]
 
-        for key in allKeys {
-            if !excludedKeys.contains(key) {
-                let value = try decode(T.self, forKey: key)
-                map[key] = value
-            }
+        for key in allKeys where !excludedKeys.contains(key) {
+            let value = try decode(T.self, forKey: key)
+            map[key] = value
         }
 
         return map

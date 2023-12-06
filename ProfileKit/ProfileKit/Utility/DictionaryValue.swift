@@ -1,6 +1,6 @@
 //
 //  DictionaryValue.swift
-//  Profiles
+//  ProfileKit
 //
 //  Created by Erik Berglund.
 //  Copyright © 2019 Erik Berglund. All rights reserved.
@@ -25,7 +25,7 @@ internal func value(stringValue: String, attemptingToCastAsType type: Dictionary
     case .bool:
         return NSString(string: stringValue).boolValue
     case .data:
-        return Data(withHexString: stringValue.replacingOccurrences(of: "[^a-zA-Z0-9]", with: "", options: .regularExpression))
+        return Data(withHexString: stringValue.replacingOccurrences(of: "[^a-zA-Z0-9]", with: "", options: .regularExpression)) ?? stringValue
     case .date:
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss Z"

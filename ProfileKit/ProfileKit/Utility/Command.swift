@@ -1,6 +1,6 @@
 //
 //  Command.swift
-//  Profiles
+//  ProfileKit
 //
 //  Created by Erik Berglund.
 //  Copyright © 2019 Erik Berglund. All rights reserved.
@@ -17,11 +17,7 @@ public class Command {
         task.arguments = arguments
         task.standardOutput = stdOutPipe
 
-        if #available(OSX 10.13, *) {
-            try task.run()
-        } else {
-            task.launch()
-        }
+        try task.run()
 
         return stdOutPipe.fileHandleForReading.readDataToEndOfFile()
     }
@@ -33,24 +29,22 @@ public class Command {
         }
 
         let plistScanner = Scanner(string: string)
-        var plistScannerString: NSString? = ""
 
         // Move to the first line containing '<?xml'
-        plistScanner.scanUpTo("<?xml", into: nil)
+        _ = plistScanner.scanUpToString("<?xml")
 
-        // Get the string contents between the first '<?xml' and '</plist>' encountered
-        if !plistScanner.scanUpTo("</plist>", into: &plistScannerString) {
+        guard let plistScannerString = plistScanner.scanUpToString("</plist>") else {
             return nil
         }
 
         // If the scannerString is not empty, replace the plistString
-        guard let plistString = plistScannerString as String?, let plistData = (plistString + "\n</plist>").data(using: .utf8) else {
+        guard let plistData = (plistScannerString + "\n</plist>").data(using: .utf8) else {
             return nil
         }
 
         // Convert the output to a dictionary
         guard let plist = try PropertyListSerialization.propertyList(from: plistData, format: nil) as? [String: Any] else {
-            Swift.print("Failed to decode plist string \(plistString))")
+            Swift.print("Failed to decode plist string \(plistScannerString))")
             return nil
         }
 

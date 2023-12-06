@@ -1,8 +1,8 @@
 //
-//  ParserShow.swift
+//  ProfilesCommand+Show.swift
 //  ProfileKit
 //
-//  Created by Erik Berglund on 2019-04-30.
+//  Created by Erik Berglund.
 //  Copyright © 2019 Erik Berglund. All rights reserved.
 //
 
@@ -40,7 +40,7 @@ public extension ProfilesCommand {
                 var updatedProfile = self.updateDictionary(scopeProfile, withKeyType: InstalledProfileKey.self)
 
                 // If this is the User scope, add the Username and UID for the user the profile is installed for
-                if scopeKeyName == "User"{
+                if scopeKeyName == "User" {
                     var internalData = updatedProfile[InstalledProfileKey.internalData.rawValue] as? [String: Any] ?? [String: Any]()
                     internalData[InstalledProfileKey.installedForUser.rawValue] = scopeKey
                     internalData[InstalledProfileKey.installedForUID.rawValue] = getpwnam(scopeKey)?.pointee.pw_uid ?? -1
@@ -56,6 +56,7 @@ public extension ProfilesCommand {
 
             // Add the updated profiles to the installed profiles dict
             var installedScopeProfiles = installedProfiles[scopeKeyName] ?? [[String: Any]]()
+
             installedScopeProfiles.append(contentsOf: updatedProfiles)
             installedProfiles[scopeKeyName] = installedScopeProfiles
         }

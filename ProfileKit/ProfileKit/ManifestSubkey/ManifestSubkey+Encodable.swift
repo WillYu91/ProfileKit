@@ -1,8 +1,8 @@
 //
-//  ManifestSubkeyEncodable.swift
+//  ManifestSubkey+Encodable.swift
 //  ProfileKit
 //
-//  Created by Erik Berglund on 2019-06-14.
+//  Created by Erik Berglund.
 //  Copyright © 2019 Erik Berglund. All rights reserved.
 //
 

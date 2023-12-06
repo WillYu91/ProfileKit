@@ -2,7 +2,7 @@
 //  PayloadSubkey.swift
 //  ProfileKit
 //
-//  Created by Erik Berglund on 2019-06-14.
+//  Created by Erik Berglund.
 //  Copyright © 2019 Erik Berglund. All rights reserved.
 //
 
@@ -22,7 +22,7 @@ public class PayloadSubkey {
     // MARK: -
     // MARK: Variables Optional
 
-    public var enabled: Bool = false
+    public var enabled = false
     public var defaultValue: Any?
     public var subkeys: [PayloadSubkey]?
     public var value: Any?

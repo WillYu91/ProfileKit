@@ -2,7 +2,7 @@
 //  ManifestController.swift
 //  ProfileKit
 //
-//  Created by Erik Berglund on 2019-06-17.
+//  Created by Erik Berglund.
 //  Copyright © 2019 Erik Berglund. All rights reserved.
 //
 
@@ -63,7 +63,7 @@ internal class ManifestController {
                     continue
                 }
 
-                // Verify only the latest version of a specific manifest i loaded
+                // Verify only the latest version of a specific manifest is loaded
                 if let existingManifest = manifests.first(where: { $0.domainIdentifier == manifest.domainIdentifier }) {
                     if existingManifest.version < manifest.version || ( existingManifest.version == manifest.version && existingManifest.lastModified < manifest.lastModified ) {
                         manifests.remove(existingManifest)
@@ -80,7 +80,7 @@ internal class ManifestController {
                 manifest.category = self.category
                 manifest.manifestURL = manifestURL
 
-                // Initialize variaables
+                // Initialize variables
                 manifest.intializeVariables()
 
                 // FIXME: Add Override Here

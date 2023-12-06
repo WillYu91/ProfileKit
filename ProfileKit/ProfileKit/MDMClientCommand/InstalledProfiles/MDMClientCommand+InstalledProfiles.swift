@@ -1,6 +1,6 @@
 //
-//  MDMClientCommand.swift
-//  Profiles
+//  MDMClientCommand+InstalledProfiles.swift
+//  ProfileKit
 //
 //  Created by Erik Berglund.
 //  Copyright © 2019 Erik Berglund. All rights reserved.
@@ -12,8 +12,8 @@ public extension MDMClientCommand {
     static func installedProfiles() throws -> [String: [[String: Any]]] {
         var installedProfiles = [String: [[String: Any]]]()
 
-        // Run the command installedProfiles
-        let data = try Command.run(path: self.path, arguments: ["installedProfiles"])
+        // Run the command QueryInstalledProfiles
+        let data = try Command.run(path: self.path, arguments: ["QueryInstalledProfiles"])
 
         // Parse the returned data line by line
         if let lineReader = LineReader(data: data) {
@@ -22,7 +22,6 @@ public extension MDMClientCommand {
             var currentPayload = [String: String]()
             var currentPayloads = [[String: Any]]()
 
-            // var state = StateInstalledProfiles()
             var profileScope: Scope = .system
             var profileLevel: Level = .profile
 
@@ -30,7 +29,6 @@ public extension MDMClientCommand {
 
             var index = 0
             while let line = lineReader.nextLine() {
-                // Swift.print("line: \(index): \(line)")
                 index += 1
                 switch true {
 
