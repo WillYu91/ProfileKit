@@ -39,17 +39,16 @@ public class Manifest {
     public var iOSDeprecated: String?
     public var iOSMax: String?
     public var iOSMin: String?
-    public var manifest: [String: Any]?
     public var macOSDeprecated: String?
     public var macOSMax: String?
     public var macOSMin: String?
     public var note: String?
     public var override: String?
-    public var requireSupervision = false
-    public var requireUserApprovedMDM = false
+    public var requireSupervision: Bool? = false
+    public var requireUserApprovedMDM: Bool? = false
     public var subdomain: String?
     public var substitutionVariables: [String: [String: String]]?
-    public var subkeys = [ManifestSubkey]()
+    public var subkeys: [ManifestSubkey] = [ManifestSubkey]()
     public var targets: [String]?
     public var tvOSDeprecated: String?
     public var tvOSMax: String?
@@ -58,12 +57,12 @@ public class Manifest {
     // MARK: -
     // MARK: Variables Externally set/Generated
 
-    public var category: Manifest.Category = .unknown
-    public var hasOverride = false
+    public var category: Manifest.Category? = .unknown
+    public var hasOverride: Bool? = false
     public var manifestDict: [String: Any]?
     public var manifestURL: URL?
-    public var manifestOverride: [String: Any]?
-    public var subkeysPayloadContent = [ManifestSubkey]()
+    public var manifestOverride: [String: ManifestSubkey]?
+    public var subkeysPayloadContent: [ManifestSubkey]? = [ManifestSubkey]()
 
     // MARK: -
     // MARK: Initialization
@@ -77,7 +76,7 @@ public class Manifest {
         self.description = try container.decode(String.self, forKey: .description)
         self.domain = try container.decode(String.self, forKey: .domain)
         self.formatVersion = try container.decodeIfPresent(Int.self, forKey: .formatVersion) ?? 1
-        self.interaction = try container.decode(Manifest.Interaction.self, forKey: .interaction)
+        self.interaction = try container.decodeIfPresent(Manifest.Interaction.self, forKey: .interaction) ?? .undefined
         self.lastModified = try container.decode(Date.self, forKey: .lastModified)
         self.platforms = try container.decode([String].self, forKey: .platforms)
         self.title = try container.decode(String.self, forKey: .title)
@@ -100,11 +99,6 @@ public class Manifest {
 
         // Add all PayloadContent subkeys to a separate array
         self.subkeysPayloadContent = self.subkeys.filter({ !Payload.commonKeys.contains($0.name) })
-
-        // Update isSinglePayloadContent on any subkey that is the only payload content subkey.
-        if self.subkeysPayloadContent.count == 1, let subkey = self.subkeysPayloadContent.first {
-            subkey.isSinglePayloadContent = true
-        }
     }
 }
 

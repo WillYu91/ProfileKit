@@ -10,6 +10,7 @@ import Foundation
 
 enum ManifestsError: Error {
     case unknown
+    case badPath
     case uninitializedCategory(Manifest.Category)
     case uninitializedCategories(Set<Manifest.Category>)
 }
@@ -19,6 +20,8 @@ extension ManifestsError: LocalizedError {
         switch self {
         case .unknown:
             return "Unknown Error"
+        case .badPath:
+            return "Bad Path for manifests"
         case .uninitializedCategory(let category):
             return "Category \(category) is not initialized. You must initialize a manifest category before using it."
         case .uninitializedCategories(let categories):

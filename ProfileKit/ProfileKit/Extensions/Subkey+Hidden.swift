@@ -1,5 +1,5 @@
 //
-//  ManifestSubkey+Hidden.swift
+//  Subkey+Hidden.swift
 //  ProfileKit
 //
 //  Created by Erik Berglund.
@@ -8,14 +8,14 @@
 
 import Foundation
 
-public extension ManifestSubkey {
+public extension Subkey {
     enum Hidden: String, Codable {
         case no
         case all
         case container
 
         init(keyValue: String) {
-            self = ManifestSubkey.Hidden(rawValue: keyValue) ?? .no
+            self = Subkey.Hidden(rawValue: keyValue) ?? .no
         }
     }
 }

@@ -33,7 +33,7 @@ public class Manifests {
 
     private init() {}
 
-    public func initialize(categories: Set<Manifest.Category>) {
+    public func loadManifestsFromDisk(categories: Set<Manifest.Category>) async throws {
         for category in categories.subtracting(self.categories) {
             self.manifestControllers.insert(ManifestController(category: category))
         }
@@ -64,8 +64,8 @@ public class Manifests {
             throw ManifestsError.uninitializedCategories(categories)
         }
 
-        try self.manifestControllers.filter({ categories.contains($0.category) }).forEach { manifestController in
-            try manifestController.updateManifests()
+        self.manifestControllers.filter({ categories.contains($0.category) }).forEach { manifestController in
+            manifestController.updateManifests()
         }
     }
 

@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		17CC24AC2B2829240091B5FE /* Subkey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17CC24AB2B2829240091B5FE /* Subkey.swift */; };
+		17CC24AD2B2829240091B5FE /* Subkey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17CC24AB2B2829240091B5FE /* Subkey.swift */; };
+		17E3EC1E2B240A6000B6EA7B /* ProfileKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E3EC1D2B240A6000B6EA7B /* ProfileKitTests.swift */; };
+		17E3EC1F2B240A6000B6EA7B /* ProfileKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 534B03172274602F008641DA /* ProfileKit.framework */; };
 		532BC04022AA5CD800318568 /* Manifest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 532BC03F22AA5CD800318568 /* Manifest.swift */; };
 		532BC04222AA5E1500318568 /* ManifestSubkey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 532BC04122AA5E1500318568 /* ManifestSubkey.swift */; };
 		532BC04422AA614700318568 /* ManifestKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 532BC04322AA614700318568 /* ManifestKey.swift */; };
@@ -19,7 +23,6 @@
 		534B03262274605E008641DA /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 534B03242274605E008641DA /* Profile.swift */; };
 		534B032A2274606C008641DA /* Payload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 534B03282274606B008641DA /* Payload.swift */; };
 		534B032B2274606C008641DA /* PayloadKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 534B03292274606C008641DA /* PayloadKey.swift */; };
-		534B033122746118008641DA /* InstalledProfileInternalData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 534B032D22746118008641DA /* InstalledProfileInternalData.swift */; };
 		534B033222746118008641DA /* InstalledProfileKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 534B032E22746118008641DA /* InstalledProfileKey.swift */; };
 		534B033422746118008641DA /* InstalledProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 534B033022746118008641DA /* InstalledProfile.swift */; };
 		534B03372274638B008641DA /* ProfileSigner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 534B03362274638B008641DA /* ProfileSigner.swift */; };
@@ -47,19 +50,28 @@
 		53C03A3E227576B2004FC211 /* MDMClientCommand+InstalledProfiles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53C03A3D227576B2004FC211 /* MDMClientCommand+InstalledProfiles.swift */; };
 		53C03A432275A53A004FC211 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53C03A422275A53A004FC211 /* String.swift */; };
 		53C03A452276397D004FC211 /* NSDictionaryParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53C03A442276397D004FC211 /* NSDictionaryParser.swift */; };
-		53EC673022B3B92C008BDB1F /* Manifest+Decodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53EC672F22B3B92C008BDB1F /* Manifest+Decodable.swift */; };
-		53EC673222B3B96D008BDB1F /* Manifest+Encodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53EC673122B3B96D008BDB1F /* Manifest+Encodable.swift */; };
-		53EC673422B3B9CC008BDB1F /* ManifestSubkey+Decodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53EC673322B3B9CC008BDB1F /* ManifestSubkey+Decodable.swift */; };
-		53EC673622B3B9F0008BDB1F /* ManifestSubkey+Encodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53EC673522B3B9F0008BDB1F /* ManifestSubkey+Encodable.swift */; };
-		53EC673A22B3CA07008BDB1F /* PayloadSubkey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53EC673922B3CA07008BDB1F /* PayloadSubkey.swift */; };
+		53EC673022B3B92C008BDB1F /* Manifest+Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53EC672F22B3B92C008BDB1F /* Manifest+Codable.swift */; };
 		53EC673F22B3CD9A008BDB1F /* Manifest+Interaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53EC673E22B3CD9A008BDB1F /* Manifest+Interaction.swift */; };
-		53EC674122B3CE9B008BDB1F /* ManifestSubkey+Require.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53EC674022B3CE9B008BDB1F /* ManifestSubkey+Require.swift */; };
-		53EC674322B3CFFA008BDB1F /* ManifestSubkey+Hidden.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53EC674222B3CFFA008BDB1F /* ManifestSubkey+Hidden.swift */; };
+		53EC674122B3CE9B008BDB1F /* Subkey+Require.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53EC674022B3CE9B008BDB1F /* Subkey+Require.swift */; };
+		53EC674322B3CFFA008BDB1F /* Subkey+Hidden.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53EC674222B3CFFA008BDB1F /* Subkey+Hidden.swift */; };
 		53EC674522B3D17C008BDB1F /* Manifest+Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53EC674422B3D17C008BDB1F /* Manifest+Category.swift */; };
 		53EC674822B3D242008BDB1F /* Manifests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53EC674722B3D242008BDB1F /* Manifests.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		17E3EC202B240A6000B6EA7B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 534B030E2274602F008641DA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 534B03162274602F008641DA;
+			remoteInfo = ProfileKit;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		17CC24AB2B2829240091B5FE /* Subkey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Subkey.swift; sourceTree = "<group>"; };
+		17E3EC1B2B240A6000B6EA7B /* ProfileKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ProfileKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		17E3EC1D2B240A6000B6EA7B /* ProfileKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileKitTests.swift; sourceTree = "<group>"; };
 		532BC03F22AA5CD800318568 /* Manifest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Manifest.swift; sourceTree = "<group>"; };
 		532BC04122AA5E1500318568 /* ManifestSubkey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManifestSubkey.swift; sourceTree = "<group>"; };
 		532BC04322AA614700318568 /* ManifestKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManifestKey.swift; sourceTree = "<group>"; };
@@ -74,7 +86,6 @@
 		534B03242274605E008641DA /* Profile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		534B03282274606B008641DA /* Payload.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Payload.swift; sourceTree = "<group>"; };
 		534B03292274606C008641DA /* PayloadKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PayloadKey.swift; sourceTree = "<group>"; };
-		534B032D22746118008641DA /* InstalledProfileInternalData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstalledProfileInternalData.swift; sourceTree = "<group>"; };
 		534B032E22746118008641DA /* InstalledProfileKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstalledProfileKey.swift; sourceTree = "<group>"; };
 		534B033022746118008641DA /* InstalledProfile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstalledProfile.swift; sourceTree = "<group>"; };
 		534B03362274638B008641DA /* ProfileSigner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSigner.swift; sourceTree = "<group>"; };
@@ -102,19 +113,23 @@
 		53C03A3D227576B2004FC211 /* MDMClientCommand+InstalledProfiles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MDMClientCommand+InstalledProfiles.swift"; sourceTree = "<group>"; };
 		53C03A422275A53A004FC211 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		53C03A442276397D004FC211 /* NSDictionaryParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSDictionaryParser.swift; sourceTree = "<group>"; };
-		53EC672F22B3B92C008BDB1F /* Manifest+Decodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Manifest+Decodable.swift"; sourceTree = "<group>"; };
-		53EC673122B3B96D008BDB1F /* Manifest+Encodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Manifest+Encodable.swift"; sourceTree = "<group>"; };
-		53EC673322B3B9CC008BDB1F /* ManifestSubkey+Decodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ManifestSubkey+Decodable.swift"; sourceTree = "<group>"; };
-		53EC673522B3B9F0008BDB1F /* ManifestSubkey+Encodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ManifestSubkey+Encodable.swift"; sourceTree = "<group>"; };
-		53EC673922B3CA07008BDB1F /* PayloadSubkey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayloadSubkey.swift; sourceTree = "<group>"; };
+		53EC672F22B3B92C008BDB1F /* Manifest+Codable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Manifest+Codable.swift"; sourceTree = "<group>"; };
 		53EC673E22B3CD9A008BDB1F /* Manifest+Interaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Manifest+Interaction.swift"; sourceTree = "<group>"; };
-		53EC674022B3CE9B008BDB1F /* ManifestSubkey+Require.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ManifestSubkey+Require.swift"; sourceTree = "<group>"; };
-		53EC674222B3CFFA008BDB1F /* ManifestSubkey+Hidden.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ManifestSubkey+Hidden.swift"; sourceTree = "<group>"; };
+		53EC674022B3CE9B008BDB1F /* Subkey+Require.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Subkey+Require.swift"; sourceTree = "<group>"; };
+		53EC674222B3CFFA008BDB1F /* Subkey+Hidden.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Subkey+Hidden.swift"; sourceTree = "<group>"; };
 		53EC674422B3D17C008BDB1F /* Manifest+Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Manifest+Category.swift"; sourceTree = "<group>"; };
 		53EC674722B3D242008BDB1F /* Manifests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Manifests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		17E3EC182B240A6000B6EA7B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				17E3EC1F2B240A6000B6EA7B /* ProfileKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		534B03142274602F008641DA /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -125,12 +140,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		17E3EC1C2B240A6000B6EA7B /* ProfileKitTests */ = {
+			isa = PBXGroup;
+			children = (
+				17E3EC1D2B240A6000B6EA7B /* ProfileKitTests.swift */,
+			);
+			path = ProfileKitTests;
+			sourceTree = "<group>";
+		};
 		532BC03E22AA5CC300318568 /* Manifest */ = {
 			isa = PBXGroup;
 			children = (
 				532BC03F22AA5CD800318568 /* Manifest.swift */,
-				53EC672F22B3B92C008BDB1F /* Manifest+Decodable.swift */,
-				53EC673122B3B96D008BDB1F /* Manifest+Encodable.swift */,
+				53EC672F22B3B92C008BDB1F /* Manifest+Codable.swift */,
 				532BC04322AA614700318568 /* ManifestKey.swift */,
 			);
 			path = Manifest;
@@ -148,6 +170,7 @@
 			isa = PBXGroup;
 			children = (
 				534B03192274602F008641DA /* ProfileKit */,
+				17E3EC1C2B240A6000B6EA7B /* ProfileKitTests */,
 				534B03182274602F008641DA /* Products */,
 			);
 			sourceTree = "<group>";
@@ -156,6 +179,7 @@
 			isa = PBXGroup;
 			children = (
 				534B03172274602F008641DA /* ProfileKit.framework */,
+				17E3EC1B2B240A6000B6EA7B /* ProfileKitTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -171,7 +195,6 @@
 				534B03352274636E008641DA /* ProfileSigner */,
 				534B032222746048008641DA /* Profile */,
 				534B032722746063008641DA /* Payload */,
-				53EC673822B3C9BC008BDB1F /* PayloadSubkey */,
 				532BC03E22AA5CC300318568 /* Manifest */,
 				53EC674622B3D231008BDB1F /* Manifests */,
 				53A9EA4E22B78A4E00D26A79 /* ManifestController */,
@@ -208,7 +231,6 @@
 			children = (
 				534B033022746118008641DA /* InstalledProfile.swift */,
 				534B032E22746118008641DA /* InstalledProfileKey.swift */,
-				534B032D22746118008641DA /* InstalledProfileInternalData.swift */,
 			);
 			path = InstalledProfile;
 			sourceTree = "<group>";
@@ -231,8 +253,8 @@
 				53B8142722B136B60003BCBD /* KeyedEncodingContainerProtocol.swift */,
 				53EC674422B3D17C008BDB1F /* Manifest+Category.swift */,
 				53EC673E22B3CD9A008BDB1F /* Manifest+Interaction.swift */,
-				53EC674022B3CE9B008BDB1F /* ManifestSubkey+Require.swift */,
-				53EC674222B3CFFA008BDB1F /* ManifestSubkey+Hidden.swift */,
+				53EC674022B3CE9B008BDB1F /* Subkey+Require.swift */,
+				53EC674222B3CFFA008BDB1F /* Subkey+Hidden.swift */,
 				53C03A422275A53A004FC211 /* String.swift */,
 				53B8142522B136910003BCBD /* UnkeyedDecodingContainer.swift */,
 				53B8142922B1370E0003BCBD /* UnkeyedEncodingContainer.swift */,
@@ -258,6 +280,7 @@
 				534B03A722748FC4008641DA /* LineReader.swift */,
 				53C03A442276397D004FC211 /* NSDictionaryParser.swift */,
 				53A9EA5522B7A44100D26A79 /* PreferenceKey.swift */,
+				17CC24AB2B2829240091B5FE /* Subkey.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -303,19 +326,9 @@
 			isa = PBXGroup;
 			children = (
 				532BC04122AA5E1500318568 /* ManifestSubkey.swift */,
-				53EC673322B3B9CC008BDB1F /* ManifestSubkey+Decodable.swift */,
-				53EC673522B3B9F0008BDB1F /* ManifestSubkey+Encodable.swift */,
 				53B6FD1A22AE85EE008F1225 /* ManifestSubkeyKey.swift */,
 			);
 			path = ManifestSubkey;
-			sourceTree = "<group>";
-		};
-		53EC673822B3C9BC008BDB1F /* PayloadSubkey */ = {
-			isa = PBXGroup;
-			children = (
-				53EC673922B3CA07008BDB1F /* PayloadSubkey.swift */,
-			);
-			path = PayloadSubkey;
 			sourceTree = "<group>";
 		};
 		53EC674622B3D231008BDB1F /* Manifests */ = {
@@ -341,6 +354,24 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		17E3EC1A2B240A6000B6EA7B /* ProfileKitTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 17E3EC242B240A6000B6EA7B /* Build configuration list for PBXNativeTarget "ProfileKitTests" */;
+			buildPhases = (
+				17E3EC172B240A6000B6EA7B /* Sources */,
+				17E3EC182B240A6000B6EA7B /* Frameworks */,
+				17E3EC192B240A6000B6EA7B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				17E3EC212B240A6000B6EA7B /* PBXTargetDependency */,
+			);
+			name = ProfileKitTests;
+			productName = ProfileKitTests;
+			productReference = 17E3EC1B2B240A6000B6EA7B /* ProfileKitTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		534B03162274602F008641DA /* ProfileKit */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 534B031F2274602F008641DA /* Build configuration list for PBXNativeTarget "ProfileKit" */;
@@ -367,9 +398,13 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
+				LastSwiftUpdateCheck = 1500;
 				LastUpgradeCheck = 1500;
 				ORGANIZATIONNAME = "Erik Berglund";
 				TargetAttributes = {
+					17E3EC1A2B240A6000B6EA7B = {
+						CreatedOnToolsVersion = 15.0.1;
+					};
 					534B03162274602F008641DA = {
 						CreatedOnToolsVersion = 10.2.1;
 						LastSwiftMigration = 1020;
@@ -390,11 +425,19 @@
 			projectRoot = "";
 			targets = (
 				534B03162274602F008641DA /* ProfileKit */,
+				17E3EC1A2B240A6000B6EA7B /* ProfileKitTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		17E3EC192B240A6000B6EA7B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		534B03152274602F008641DA /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -427,11 +470,20 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		17E3EC172B240A6000B6EA7B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				17CC24AD2B2829240091B5FE /* Subkey.swift in Sources */,
+				17E3EC1E2B240A6000B6EA7B /* ProfileKitTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		534B03132274602F008641DA /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				53EC674322B3CFFA008BDB1F /* ManifestSubkey+Hidden.swift in Sources */,
+				53EC674322B3CFFA008BDB1F /* Subkey+Hidden.swift in Sources */,
 				532D1E70227ABDE1003AEF27 /* KeychainQuery.swift in Sources */,
 				53B8142822B136B60003BCBD /* KeyedEncodingContainerProtocol.swift in Sources */,
 				534B032A2274606C008641DA /* Payload.swift in Sources */,
@@ -440,7 +492,6 @@
 				53A9EA5622B7A44100D26A79 /* PreferenceKey.swift in Sources */,
 				534B03372274638B008641DA /* ProfileSigner.swift in Sources */,
 				534B033B22746B30008641DA /* KeyedDecodingContainerProtocol.swift in Sources */,
-				53EC673A22B3CA07008BDB1F /* PayloadSubkey.swift in Sources */,
 				534B033422746118008641DA /* InstalledProfile.swift in Sources */,
 				535020B42278C5A2001F11B9 /* ProfileKit.swift in Sources */,
 				532D1E72227AC129003AEF27 /* InstalledProfiles+UpdatePayload.swift in Sources */,
@@ -448,7 +499,6 @@
 				534E7D0E22771E7100AB37F9 /* Data.swift in Sources */,
 				534B032B2274606C008641DA /* PayloadKey.swift in Sources */,
 				53EC674522B3D17C008BDB1F /* Manifest+Category.swift in Sources */,
-				534B033122746118008641DA /* InstalledProfileInternalData.swift in Sources */,
 				532BC04022AA5CD800318568 /* Manifest.swift in Sources */,
 				53EC674822B3D242008BDB1F /* Manifests.swift in Sources */,
 				5330642C2278C88C00692D0F /* ProfilesCommand.swift in Sources */,
@@ -459,16 +509,15 @@
 				53A9EA4D22B7820400D26A79 /* ManifestsError.swift in Sources */,
 				53C03A452276397D004FC211 /* NSDictionaryParser.swift in Sources */,
 				534B033222746118008641DA /* InstalledProfileKey.swift in Sources */,
-				53EC673222B3B96D008BDB1F /* Manifest+Encodable.swift in Sources */,
 				53A9EA5022B78A6C00D26A79 /* ManifestController.swift in Sources */,
 				534B03A822748FC4008641DA /* LineReader.swift in Sources */,
 				53A9EA5822B7A63800D26A79 /* FileManager.swift in Sources */,
-				53EC673022B3B92C008BDB1F /* Manifest+Decodable.swift in Sources */,
+				53EC673022B3B92C008BDB1F /* Manifest+Codable.swift in Sources */,
 				53B8142622B136910003BCBD /* UnkeyedDecodingContainer.swift in Sources */,
 				53C03A432275A53A004FC211 /* String.swift in Sources */,
 				5330642F2278C8CE00692D0F /* ProfilesCommand+Show.swift in Sources */,
 				53C03A3C2274F437004FC211 /* InstalledProfilesState.swift in Sources */,
-				53EC674122B3CE9B008BDB1F /* ManifestSubkey+Require.swift in Sources */,
+				53EC674122B3CE9B008BDB1F /* Subkey+Require.swift in Sources */,
 				532BC04222AA5E1500318568 /* ManifestSubkey.swift in Sources */,
 				53EC673F22B3CD9A008BDB1F /* Manifest+Interaction.swift in Sources */,
 				53C03A342274DEE6004FC211 /* Command.swift in Sources */,
@@ -476,16 +525,64 @@
 				53C03A3E227576B2004FC211 /* MDMClientCommand+InstalledProfiles.swift in Sources */,
 				534B03262274605E008641DA /* Profile.swift in Sources */,
 				53A9EA5A22B7A73A00D26A79 /* ManifestControllerError.swift in Sources */,
-				53EC673422B3B9CC008BDB1F /* ManifestSubkey+Decodable.swift in Sources */,
 				53C03A3A2274F12F004FC211 /* ProfileKeyProtocol.swift in Sources */,
+				17CC24AC2B2829240091B5FE /* Subkey.swift in Sources */,
 				534E7D102277459300AB37F9 /* DictionaryValue.swift in Sources */,
-				53EC673622B3B9F0008BDB1F /* ManifestSubkey+Encodable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		17E3EC212B240A6000B6EA7B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 534B03162274602F008641DA /* ProfileKit */;
+			targetProxy = 17E3EC202B240A6000B6EA7B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		17E3EC222B240A6000B6EA7B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 5L9PZT6JBR;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.willyu.ProfileKitTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		17E3EC232B240A6000B6EA7B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 5L9PZT6JBR;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.willyu.ProfileKitTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
 		534B031D2274602F008641DA /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -683,6 +780,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		17E3EC242B240A6000B6EA7B /* Build configuration list for PBXNativeTarget "ProfileKitTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				17E3EC222B240A6000B6EA7B /* Debug */,
+				17E3EC232B240A6000B6EA7B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		534B03112274602F008641DA /* Build configuration list for PBXProject "ProfileKit" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

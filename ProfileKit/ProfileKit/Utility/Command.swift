@@ -13,13 +13,13 @@ public class Command {
         return try await Task {
             let task = Process()
             let stdOutPipe = Pipe()
-            
+
             task.launchPath = path
             task.arguments = arguments
             task.standardOutput = stdOutPipe
-            
+
             try task.run()
-            
+
             return stdOutPipe.fileHandleForReading.readDataToEndOfFile()
         }.value
     }

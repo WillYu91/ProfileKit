@@ -25,25 +25,28 @@ internal class ManifestController {
     init(category: Manifest.Category) {
         Swift.print("Initializing manifest controller for category: \(category)")
         self.category = category
-        do {
-            try self.updateManifests()
-        } catch {
-            // FIXME: Proper Error
-            Swift.print("Error: \(error)")
-        }
+        self.updateManifests()
     }
 
     // MARK: -
     // MARK: Update Manifests
 
-    func updateManifests() throws {
+    func updateManifests() {
         Swift.print("Updating manifests for controller with category: \(category)")
+
         var updatedManifests = Set<Manifest>()
         for directoryRoot in ManifestController.DirectoryRoot.allCases {
-            Swift.print("Getting manifest for directory root: \(directoryRoot)")
-            guard let directoryURL = try self.directory(forType: .manifests, root: directoryRoot, create: false) else { continue }
-            try self.addManifests(fromURL: directoryURL, to: &updatedManifests)
+            do {
+                Swift.print("Getting manifest for directory root: \(directoryRoot)")
+                let directoryURL = try self.directory(forType: .manifests, root: directoryRoot, create: false)
+                  try self.addManifests(fromURL: directoryURL, to: &updatedManifests)
+            } catch {
+                Swift.print("Caught exception while updating manifests: \(String(describing: error))")
+
+                continue
+            }
         }
+
         self.manifests = updatedManifests
     }
 
