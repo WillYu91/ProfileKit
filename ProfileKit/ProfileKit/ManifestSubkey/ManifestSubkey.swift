@@ -143,8 +143,3 @@ extension ManifestSubkey {
         case view = "pfm_view"
     }
 }
-
-extension CodingUserInfoKey {
-    static let manifestSubkeyParent = CodingUserInfoKey(rawValue: "ManifestSubkeyParent")!
-    static let manifestSubkeyParentKeyPath = CodingUserInfoKey(rawValue: "ManifestSubkeyParentKeyPath")!
-}

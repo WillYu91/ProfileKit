@@ -13,13 +13,13 @@ public struct Payload: Codable {
     // MARK: -
     // MARK: Variables Static
 
-    public static let commonKeys = [PayloadKey.payloadDescription.rawValue,
-                                    PayloadKey.payloadDisplayName.rawValue,
-                                    PayloadKey.payloadIdentifier.rawValue,
-                                    PayloadKey.payloadType.rawValue,
-                                    PayloadKey.payloadUUID.rawValue,
-                                    PayloadKey.payloadVersion.rawValue,
-                                    PayloadKey.payloadOrganization.rawValue]
+    public static let commonKeys = [Payload.CodingKeys.payloadDescription.rawValue,
+                                    Payload.CodingKeys.payloadDisplayName.rawValue,
+                                    Payload.CodingKeys.payloadIdentifier.rawValue,
+                                    Payload.CodingKeys.payloadType.rawValue,
+                                    Payload.CodingKeys.payloadUUID.rawValue,
+                                    Payload.CodingKeys.payloadVersion.rawValue,
+                                    Payload.CodingKeys.payloadOrganization.rawValue]
 
     // MARK: -
     // MARK: Variables Required

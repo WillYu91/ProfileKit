@@ -24,10 +24,10 @@ do {
     if let payload = conig.payloadContent.first {
         Swift.print("Paload: \(String(describing: payload.payloadContent))")
     }
-    
+
     let categories = Set([Manifest.Category.applePayload])
     try await Manifests.shared.loadManifestsFromDisk(categories: categories)
-    
+
     let manifests = try Manifests.shared.manifests(forCategory: .applePayload)
     for manifest in manifests {
         Swift.print("manifest.domainIdentifier: \(manifest.domainIdentifier)")
@@ -36,8 +36,17 @@ do {
         Swift.print("manifest.manifestURL: \(String(describing: manifest.manifestURL))")
 
         for subkey in manifest.subkeys {
-            Swift.print("subkey name: \(subkey.name), subkey type: \(subkey.type)")
-        }
+               Swift.print("subkey: \(subkey.name)")
+               for subsubkey in subkey.subkeys ?? [] {
+                   Swift.print("subsubkey: \(subsubkey.name) - \(subsubkey.type)")
+                   for subsubsubkey in subsubkey.subkeys ?? [] {
+                       Swift.print("subsubsubkey: \(subsubsubkey.name) - \(subsubsubkey.type)")
+                       for subsubsubsubkey in subsubsubkey.subkeys ?? [] {
+                           Swift.print("subsubsubsubkey: \(subsubsubsubkey.name) - \(subsubsubsubkey.type)")
+                       }
+                   }
+               }
+           }
     }
 } catch {
     Swift.print("error: \(error)")

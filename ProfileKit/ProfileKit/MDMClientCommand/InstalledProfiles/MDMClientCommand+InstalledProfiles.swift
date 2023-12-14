@@ -79,7 +79,7 @@ public extension MDMClientCommand {
 
                     // Save the current payloads
                     if !currentPayloads.isEmpty {
-                        currentProfile[ProfileKey.payloadContent.rawValue] = currentPayloads
+                        currentProfile[Profile.CodingKeys.payloadContent.rawValue] = currentPayloads
                         currentPayloads = [[String: Any]]()
                     }
 

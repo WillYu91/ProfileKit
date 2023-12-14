@@ -13,16 +13,13 @@
 		17E3EC1F2B240A6000B6EA7B /* ProfileKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 534B03172274602F008641DA /* ProfileKit.framework */; };
 		532BC04022AA5CD800318568 /* Manifest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 532BC03F22AA5CD800318568 /* Manifest.swift */; };
 		532BC04222AA5E1500318568 /* ManifestSubkey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 532BC04122AA5E1500318568 /* ManifestSubkey.swift */; };
-		532BC04422AA614700318568 /* ManifestKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 532BC04322AA614700318568 /* ManifestKey.swift */; };
 		532D1E70227ABDE1003AEF27 /* KeychainQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 532D1E6F227ABDE1003AEF27 /* KeychainQuery.swift */; };
 		532D1E72227AC129003AEF27 /* InstalledProfiles+UpdatePayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 532D1E71227AC129003AEF27 /* InstalledProfiles+UpdatePayload.swift */; };
 		5330642C2278C88C00692D0F /* ProfilesCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5330642B2278C88C00692D0F /* ProfilesCommand.swift */; };
 		5330642F2278C8CE00692D0F /* ProfilesCommand+Show.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5330642E2278C8CE00692D0F /* ProfilesCommand+Show.swift */; };
 		534B031C2274602F008641DA /* Profiles.h in Headers */ = {isa = PBXBuildFile; fileRef = 534B031A2274602F008641DA /* Profiles.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		534B03252274605E008641DA /* ProfileKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 534B03232274605E008641DA /* ProfileKey.swift */; };
 		534B03262274605E008641DA /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 534B03242274605E008641DA /* Profile.swift */; };
 		534B032A2274606C008641DA /* Payload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 534B03282274606B008641DA /* Payload.swift */; };
-		534B032B2274606C008641DA /* PayloadKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 534B03292274606C008641DA /* PayloadKey.swift */; };
 		534B033222746118008641DA /* InstalledProfileKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 534B032E22746118008641DA /* InstalledProfileKey.swift */; };
 		534B033422746118008641DA /* InstalledProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 534B033022746118008641DA /* InstalledProfile.swift */; };
 		534B03372274638B008641DA /* ProfileSigner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 534B03362274638B008641DA /* ProfileSigner.swift */; };
@@ -39,7 +36,6 @@
 		53A9EA5622B7A44100D26A79 /* PreferenceKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53A9EA5522B7A44100D26A79 /* PreferenceKey.swift */; };
 		53A9EA5822B7A63800D26A79 /* FileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53A9EA5722B7A63800D26A79 /* FileManager.swift */; };
 		53A9EA5A22B7A73A00D26A79 /* ManifestControllerError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53A9EA5922B7A73A00D26A79 /* ManifestControllerError.swift */; };
-		53B6FD1B22AE85EF008F1225 /* ManifestSubkeyKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53B6FD1A22AE85EE008F1225 /* ManifestSubkeyKey.swift */; };
 		53B8142622B136910003BCBD /* UnkeyedDecodingContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53B8142522B136910003BCBD /* UnkeyedDecodingContainer.swift */; };
 		53B8142822B136B60003BCBD /* KeyedEncodingContainerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53B8142722B136B60003BCBD /* KeyedEncodingContainerProtocol.swift */; };
 		53B8142A22B1370E0003BCBD /* UnkeyedEncodingContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53B8142922B1370E0003BCBD /* UnkeyedEncodingContainer.swift */; };
@@ -73,7 +69,6 @@
 		17E3EC1D2B240A6000B6EA7B /* ProfileKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileKitTests.swift; sourceTree = "<group>"; };
 		532BC03F22AA5CD800318568 /* Manifest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Manifest.swift; sourceTree = "<group>"; };
 		532BC04122AA5E1500318568 /* ManifestSubkey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManifestSubkey.swift; sourceTree = "<group>"; };
-		532BC04322AA614700318568 /* ManifestKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManifestKey.swift; sourceTree = "<group>"; };
 		532D1E6F227ABDE1003AEF27 /* KeychainQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainQuery.swift; sourceTree = "<group>"; };
 		532D1E71227AC129003AEF27 /* InstalledProfiles+UpdatePayload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "InstalledProfiles+UpdatePayload.swift"; sourceTree = "<group>"; };
 		5330642B2278C88C00692D0F /* ProfilesCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilesCommand.swift; sourceTree = "<group>"; };
@@ -81,10 +76,8 @@
 		534B03172274602F008641DA /* ProfileKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ProfileKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		534B031A2274602F008641DA /* Profiles.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Profiles.h; sourceTree = "<group>"; };
 		534B031B2274602F008641DA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		534B03232274605E008641DA /* ProfileKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileKey.swift; sourceTree = "<group>"; };
 		534B03242274605E008641DA /* Profile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		534B03282274606B008641DA /* Payload.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Payload.swift; sourceTree = "<group>"; };
-		534B03292274606C008641DA /* PayloadKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PayloadKey.swift; sourceTree = "<group>"; };
 		534B032E22746118008641DA /* InstalledProfileKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstalledProfileKey.swift; sourceTree = "<group>"; };
 		534B033022746118008641DA /* InstalledProfile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstalledProfile.swift; sourceTree = "<group>"; };
 		534B03362274638B008641DA /* ProfileSigner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSigner.swift; sourceTree = "<group>"; };
@@ -101,7 +94,6 @@
 		53A9EA5522B7A44100D26A79 /* PreferenceKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferenceKey.swift; sourceTree = "<group>"; };
 		53A9EA5722B7A63800D26A79 /* FileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManager.swift; sourceTree = "<group>"; };
 		53A9EA5922B7A73A00D26A79 /* ManifestControllerError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManifestControllerError.swift; sourceTree = "<group>"; };
-		53B6FD1A22AE85EE008F1225 /* ManifestSubkeyKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManifestSubkeyKey.swift; sourceTree = "<group>"; };
 		53B8142522B136910003BCBD /* UnkeyedDecodingContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnkeyedDecodingContainer.swift; sourceTree = "<group>"; };
 		53B8142722B136B60003BCBD /* KeyedEncodingContainerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyedEncodingContainerProtocol.swift; sourceTree = "<group>"; };
 		53B8142922B1370E0003BCBD /* UnkeyedEncodingContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnkeyedEncodingContainer.swift; sourceTree = "<group>"; };
@@ -149,7 +141,6 @@
 		532BC03E22AA5CC300318568 /* Manifest */ = {
 			isa = PBXGroup;
 			children = (
-				532BC04322AA614700318568 /* ManifestKey.swift */,
 				532BC03F22AA5CD800318568 /* Manifest.swift */,
 			);
 			path = Manifest;
@@ -208,7 +199,6 @@
 			isa = PBXGroup;
 			children = (
 				534B03242274605E008641DA /* Profile.swift */,
-				534B03232274605E008641DA /* ProfileKey.swift */,
 				53C03A392274F12F004FC211 /* ProfileKeyProtocol.swift */,
 			);
 			path = Profile;
@@ -218,7 +208,6 @@
 			isa = PBXGroup;
 			children = (
 				534B03282274606B008641DA /* Payload.swift */,
-				534B03292274606C008641DA /* PayloadKey.swift */,
 			);
 			path = Payload;
 			sourceTree = "<group>";
@@ -323,7 +312,6 @@
 			isa = PBXGroup;
 			children = (
 				532BC04122AA5E1500318568 /* ManifestSubkey.swift */,
-				53B6FD1A22AE85EE008F1225 /* ManifestSubkeyKey.swift */,
 			);
 			path = ManifestSubkey;
 			sourceTree = "<group>";
@@ -485,7 +473,6 @@
 				53B8142822B136B60003BCBD /* KeyedEncodingContainerProtocol.swift in Sources */,
 				534B032A2274606C008641DA /* Payload.swift in Sources */,
 				534E7D0C22771B1F00AB37F9 /* Dictionary.swift in Sources */,
-				534B03252274605E008641DA /* ProfileKey.swift in Sources */,
 				53A9EA5622B7A44100D26A79 /* PreferenceKey.swift in Sources */,
 				534B03372274638B008641DA /* ProfileSigner.swift in Sources */,
 				534B033B22746B30008641DA /* KeyedDecodingContainerProtocol.swift in Sources */,
@@ -494,13 +481,11 @@
 				532D1E72227AC129003AEF27 /* InstalledProfiles+UpdatePayload.swift in Sources */,
 				53C03A372274DF5A004FC211 /* MDMClientCommand.swift in Sources */,
 				534E7D0E22771E7100AB37F9 /* Data.swift in Sources */,
-				534B032B2274606C008641DA /* PayloadKey.swift in Sources */,
 				53EC674522B3D17C008BDB1F /* Manifest+Category.swift in Sources */,
 				532BC04022AA5CD800318568 /* Manifest.swift in Sources */,
 				53EC674822B3D242008BDB1F /* Manifests.swift in Sources */,
 				5330642C2278C88C00692D0F /* ProfilesCommand.swift in Sources */,
 				53A9EA5422B79F4F00D26A79 /* ManifestController+Directory.swift in Sources */,
-				532BC04422AA614700318568 /* ManifestKey.swift in Sources */,
 				53B8142A22B1370E0003BCBD /* UnkeyedEncodingContainer.swift in Sources */,
 				534B03A522748F53008641DA /* InstalledProfiles.swift in Sources */,
 				53A9EA4D22B7820400D26A79 /* ManifestsError.swift in Sources */,
@@ -517,7 +502,6 @@
 				532BC04222AA5E1500318568 /* ManifestSubkey.swift in Sources */,
 				53EC673F22B3CD9A008BDB1F /* Manifest+Interaction.swift in Sources */,
 				53C03A342274DEE6004FC211 /* Command.swift in Sources */,
-				53B6FD1B22AE85EF008F1225 /* ManifestSubkeyKey.swift in Sources */,
 				53C03A3E227576B2004FC211 /* MDMClientCommand+InstalledProfiles.swift in Sources */,
 				534B03262274605E008641DA /* Profile.swift in Sources */,
 				53A9EA5A22B7A73A00D26A79 /* ManifestControllerError.swift in Sources */,
