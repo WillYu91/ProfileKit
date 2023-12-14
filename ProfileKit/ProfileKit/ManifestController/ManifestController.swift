@@ -55,7 +55,7 @@ internal class ManifestController {
         for manifestURL in manifestURLs.filter({ $0.pathExtension == "plist" }) {
             do {
                 let manifestData = try Data(contentsOf: manifestURL)
-                let manifest = try PropertyListDecoder().decode(Manifest.self, from: manifestData)
+                var manifest = try PropertyListDecoder().decode(Manifest.self, from: manifestData)
 
                 // Verify this manifest is supported by this version of the framework
                 guard manifest.formatVersion <= Manifest.formatVersionSupported else {
@@ -82,9 +82,6 @@ internal class ManifestController {
                 // Add external information to manifest
                 manifest.category = self.category
                 manifest.manifestURL = manifestURL
-
-                // Initialize variables
-                manifest.intializeVariables()
 
                 // FIXME: Add Override Here
 

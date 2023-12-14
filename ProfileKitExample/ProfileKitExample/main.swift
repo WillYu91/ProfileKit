@@ -30,10 +30,9 @@ do {
     
     let manifests = try Manifests.shared.manifests(forCategory: .applePayload)
     for manifest in manifests {
-        Swift.print("manifest: \(String(describing:manifest))")
+        Swift.print("manifest.domainIdentifier: \(manifest.domainIdentifier)")
         Swift.print("manifest.interaction: \(manifest.interaction)")
         Swift.print("manifest.title: \(manifest.title)")
-        Swift.print("manifest.domainIdentifier: \(manifest.domainIdentifier)")
         Swift.print("manifest.manifestURL: \(String(describing: manifest.manifestURL))")
 
         for subkey in manifest.subkeys {

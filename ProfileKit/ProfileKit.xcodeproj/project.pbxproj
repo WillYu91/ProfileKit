@@ -50,7 +50,6 @@
 		53C03A3E227576B2004FC211 /* MDMClientCommand+InstalledProfiles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53C03A3D227576B2004FC211 /* MDMClientCommand+InstalledProfiles.swift */; };
 		53C03A432275A53A004FC211 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53C03A422275A53A004FC211 /* String.swift */; };
 		53C03A452276397D004FC211 /* NSDictionaryParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53C03A442276397D004FC211 /* NSDictionaryParser.swift */; };
-		53EC673022B3B92C008BDB1F /* Manifest+Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53EC672F22B3B92C008BDB1F /* Manifest+Codable.swift */; };
 		53EC673F22B3CD9A008BDB1F /* Manifest+Interaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53EC673E22B3CD9A008BDB1F /* Manifest+Interaction.swift */; };
 		53EC674122B3CE9B008BDB1F /* Subkey+Require.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53EC674022B3CE9B008BDB1F /* Subkey+Require.swift */; };
 		53EC674322B3CFFA008BDB1F /* Subkey+Hidden.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53EC674222B3CFFA008BDB1F /* Subkey+Hidden.swift */; };
@@ -113,7 +112,6 @@
 		53C03A3D227576B2004FC211 /* MDMClientCommand+InstalledProfiles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MDMClientCommand+InstalledProfiles.swift"; sourceTree = "<group>"; };
 		53C03A422275A53A004FC211 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		53C03A442276397D004FC211 /* NSDictionaryParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSDictionaryParser.swift; sourceTree = "<group>"; };
-		53EC672F22B3B92C008BDB1F /* Manifest+Codable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Manifest+Codable.swift"; sourceTree = "<group>"; };
 		53EC673E22B3CD9A008BDB1F /* Manifest+Interaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Manifest+Interaction.swift"; sourceTree = "<group>"; };
 		53EC674022B3CE9B008BDB1F /* Subkey+Require.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Subkey+Require.swift"; sourceTree = "<group>"; };
 		53EC674222B3CFFA008BDB1F /* Subkey+Hidden.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Subkey+Hidden.swift"; sourceTree = "<group>"; };
@@ -151,9 +149,8 @@
 		532BC03E22AA5CC300318568 /* Manifest */ = {
 			isa = PBXGroup;
 			children = (
-				532BC03F22AA5CD800318568 /* Manifest.swift */,
-				53EC672F22B3B92C008BDB1F /* Manifest+Codable.swift */,
 				532BC04322AA614700318568 /* ManifestKey.swift */,
+				532BC03F22AA5CD800318568 /* Manifest.swift */,
 			);
 			path = Manifest;
 			sourceTree = "<group>";
@@ -399,7 +396,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
 				LastSwiftUpdateCheck = 1500;
-				LastUpgradeCheck = 1500;
+				LastUpgradeCheck = 1510;
 				ORGANIZATIONNAME = "Erik Berglund";
 				TargetAttributes = {
 					17E3EC1A2B240A6000B6EA7B = {
@@ -512,7 +509,6 @@
 				53A9EA5022B78A6C00D26A79 /* ManifestController.swift in Sources */,
 				534B03A822748FC4008641DA /* LineReader.swift in Sources */,
 				53A9EA5822B7A63800D26A79 /* FileManager.swift in Sources */,
-				53EC673022B3B92C008BDB1F /* Manifest+Codable.swift in Sources */,
 				53B8142622B136910003BCBD /* UnkeyedDecodingContainer.swift in Sources */,
 				53C03A432275A53A004FC211 /* String.swift in Sources */,
 				5330642F2278C8CE00692D0F /* ProfilesCommand+Show.swift in Sources */,
@@ -587,6 +583,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -654,6 +651,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
