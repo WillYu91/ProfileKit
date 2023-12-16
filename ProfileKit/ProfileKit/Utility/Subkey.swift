@@ -15,6 +15,7 @@ public enum Subkey: Codable {
     case date(Date)
     case data(Data)
     case dictionary([String: Subkey])
+    case double(Double)
     case float(Float)
     case integer(Int)
     case string(String)
@@ -51,6 +52,11 @@ public enum Subkey: Codable {
             return
         }
 
+        if let double = try? container.decode(Double.self){
+            self = .double(double)
+            return
+        }
+        
         if let float = try? container.decode(Float.self) {
             self = .float(float)
             return
@@ -67,5 +73,30 @@ public enum Subkey: Codable {
         }
 
         throw SubkeyError.missingValue
+    }
+    
+    public var value: Any? {
+        switch self {
+        case .array(let array):
+            return array
+        case .bool(let bool):
+            return bool
+        case .data(let data):
+            return data
+        case .date(let date):
+            return date
+        case .dictionary(let dictionary):
+            return dictionary
+        case .double(let double):
+            return double
+        case .float(let float):
+            return float
+        case .integer(let integer):
+            return integer
+        case .string(let string):
+            return string
+        }
+
+        return nil
     }
 }

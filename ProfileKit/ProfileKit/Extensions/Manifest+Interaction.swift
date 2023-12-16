@@ -14,8 +14,16 @@ public extension Manifest {
         case combined
         case exclusive
 
-        init(keyValue: String) {
-            self = Manifest.Interaction(rawValue: keyValue) ?? .undefined
+        public init (from decoder: Decoder) throws {
+            let container = try decoder.singleValueContainer()
+
+            do {
+                let value = try container.decode(String.self)
+                
+                self = Manifest.Interaction(rawValue: value) ?? .undefined
+            } catch {
+                self = .undefined
+            }
         }
     }
 }

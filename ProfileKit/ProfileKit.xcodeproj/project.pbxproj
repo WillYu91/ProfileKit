@@ -142,6 +142,7 @@
 			isa = PBXGroup;
 			children = (
 				532BC03F22AA5CD800318568 /* Manifest.swift */,
+				532BC04122AA5E1500318568 /* ManifestSubkey.swift */,
 			);
 			path = Manifest;
 			sourceTree = "<group>";
@@ -186,7 +187,6 @@
 				532BC03E22AA5CC300318568 /* Manifest */,
 				53EC674622B3D231008BDB1F /* Manifests */,
 				53A9EA4E22B78A4E00D26A79 /* ManifestController */,
-				53EC673722B3C9AC008BDB1F /* ManifestSubkey */,
 				534B032C227460FA008641DA /* InstalledProfile */,
 				534B03A322748F37008641DA /* InstalledProfiles */,
 				537EE4C622784A5700058FD1 /* ProfilesCommand */,
@@ -239,8 +239,8 @@
 				53B8142722B136B60003BCBD /* KeyedEncodingContainerProtocol.swift */,
 				53EC674422B3D17C008BDB1F /* Manifest+Category.swift */,
 				53EC673E22B3CD9A008BDB1F /* Manifest+Interaction.swift */,
-				53EC674022B3CE9B008BDB1F /* Subkey+Require.swift */,
 				53EC674222B3CFFA008BDB1F /* Subkey+Hidden.swift */,
+				53EC674022B3CE9B008BDB1F /* Subkey+Require.swift */,
 				53C03A422275A53A004FC211 /* String.swift */,
 				53B8142522B136910003BCBD /* UnkeyedDecodingContainer.swift */,
 				53B8142922B1370E0003BCBD /* UnkeyedEncodingContainer.swift */,
@@ -306,14 +306,6 @@
 				537EE4C722784A8600058FD1 /* InstalledProfiles */,
 			);
 			path = MDMClientCommand;
-			sourceTree = "<group>";
-		};
-		53EC673722B3C9AC008BDB1F /* ManifestSubkey */ = {
-			isa = PBXGroup;
-			children = (
-				532BC04122AA5E1500318568 /* ManifestSubkey.swift */,
-			);
-			path = ManifestSubkey;
 			sourceTree = "<group>";
 		};
 		53EC674622B3D231008BDB1F /* Manifests */ = {

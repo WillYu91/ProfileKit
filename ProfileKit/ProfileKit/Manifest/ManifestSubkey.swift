@@ -11,8 +11,6 @@ import Foundation
 public struct ManifestSubkey: Codable {
     // MARK: -
     // MARK: Variables Required
-
-    public var name: String
     public var type: String
 
     // MARK: -
@@ -45,6 +43,7 @@ public struct ManifestSubkey: Codable {
     public var macOSDeprecated: String?
     public var macOSMax: String?
     public var macOSMin: String?
+    public var name: String?
     public var note: String?
     public var placeholderValue: Subkey?
     public var platforms: [String]?

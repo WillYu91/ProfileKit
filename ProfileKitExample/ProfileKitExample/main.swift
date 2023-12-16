@@ -11,7 +11,6 @@ import ProfileKit
 import Cocoa
 
 do {
-
     let installedProfiles = try await InstalledProfiles.querySystemForAllProfiles()
     Swift.print("Installed Profiles: \(String(describing: installedProfiles))")
 
@@ -31,18 +30,18 @@ do {
     let manifests = try Manifests.shared.manifests(forCategory: .applePayload)
     for manifest in manifests {
         Swift.print("manifest.domainIdentifier: \(manifest.domainIdentifier)")
-        Swift.print("manifest.interaction: \(manifest.interaction)")
+        Swift.print("manifest.interaction: \(String(describing: manifest.interaction))")
         Swift.print("manifest.title: \(manifest.title)")
         Swift.print("manifest.manifestURL: \(String(describing: manifest.manifestURL))")
 
         for subkey in manifest.subkeys {
-               Swift.print("subkey: \(subkey.name)")
+            Swift.print("subkey: \(String(describing: subkey.name))")
                for subsubkey in subkey.subkeys ?? [] {
-                   Swift.print("subsubkey: \(subsubkey.name) - \(subsubkey.type)")
+                   Swift.print("subsubkey: \(String(describing: subsubkey.name)) - \(subsubkey.type)")
                    for subsubsubkey in subsubkey.subkeys ?? [] {
-                       Swift.print("subsubsubkey: \(subsubsubkey.name) - \(subsubsubkey.type)")
+                       Swift.print("subsubsubkey: \(String(describing: subsubsubkey.name)) - \(subsubsubkey.type)")
                        for subsubsubsubkey in subsubsubkey.subkeys ?? [] {
-                           Swift.print("subsubsubsubkey: \(subsubsubsubkey.name) - \(subsubsubsubkey.type)")
+                           Swift.print("subsubsubsubkey: \(String(describing: subsubsubsubkey.name)) - \(subsubsubsubkey.type)")
                        }
                    }
                }

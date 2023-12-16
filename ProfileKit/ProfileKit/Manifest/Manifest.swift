@@ -18,11 +18,9 @@ public struct Manifest: Codable {
     public var description: String
     public var domain: String
     public var formatVersion: Int
-    public var interaction: Manifest.Interaction
     public var lastModified: Date
     public var platforms: [String]
     public var title: String
-    public var unique: Bool
     public var version: Int
 
     // MARK: -
@@ -35,6 +33,7 @@ public struct Manifest: Codable {
     public var iOSDeprecated: String?
     public var iOSMax: String?
     public var iOSMin: String?
+    public var interaction: Manifest.Interaction? = Manifest.Interaction.undefined
     public var macOSDeprecated: String?
     public var macOSMax: String?
     public var macOSMin: String?
@@ -49,6 +48,7 @@ public struct Manifest: Codable {
     public var tvOSDeprecated: String?
     public var tvOSMax: String?
     public var tvOSMin: String?
+    public var unique: Bool? = false
 
     // MARK: -
     // MARK: Variables Externally Set
@@ -89,7 +89,7 @@ public struct Manifest: Codable {
             return subKeysPayloadContent
         }
 
-        cachedMetadata.subKeysPayloadContent = self.subkeys.filter({ !Payload.commonKeys.contains($0.name) })
+        cachedMetadata.subKeysPayloadContent = self.subkeys.filter({ !Payload.commonKeys.contains($0.name ?? "") })
 
         return cachedMetadata.subKeysPayloadContent!
     }
