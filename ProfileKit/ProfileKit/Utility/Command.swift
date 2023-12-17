@@ -9,6 +9,9 @@
 import Foundation
 
 public class Command {
+
+    private static let logger = Logging.Logger(Command.self)
+
     public static func run(path: String, arguments: [String]?) async throws -> Data {
         return try await Task {
             let task = Process()
@@ -26,7 +29,7 @@ public class Command {
 
     public static func plistFromOutputStringData(_ data: Data) throws -> [String: Any]? {
         guard let string = String(data: data, encoding: .utf8) else {
-            Swift.print("Failed to get string from command output")
+            Command.logger.error("Failed to get string from command output")
             return nil
         }
 
@@ -46,7 +49,7 @@ public class Command {
 
         // Convert the output to a dictionary
         guard let plist = try PropertyListSerialization.propertyList(from: plistData, format: nil) as? [String: Any] else {
-            Swift.print("Failed to decode plist string \(plistScannerString))")
+            Command.logger.error("Failed to decode plist string \(plistScannerString))")
             return nil
         }
 

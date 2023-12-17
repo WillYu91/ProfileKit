@@ -10,4 +10,6 @@ import Foundation
 
 public struct ProfilesCommand {
     static let path = "/usr/bin/profiles"
+
+    internal static let logger = Logging.Logger(ProfilesCommand.self)
 }

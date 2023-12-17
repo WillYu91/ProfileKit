@@ -9,6 +9,9 @@
 import Foundation
 
 public struct InstalledProfiles {
+
+    internal static let logger = Logging.Logger(InstalledProfiles.self)
+
     public static func querySystemForAllProfiles() async throws -> [String: [InstalledProfile]] {
         var allProfiles = [String: [InstalledProfile]]()
 
@@ -30,9 +33,7 @@ public struct InstalledProfiles {
 
                     scopeProfiles.append(installedProfile)
                 } catch {
-
-                    // FIXME: Proper Logging
-                    Swift.print("Unable to create object for \(profile), error: \(error.localizedDescription)")
+                    InstalledProfiles.logger.error("Unable to create object for \(profile), error: \(error)")
                     continue
                 }
             }

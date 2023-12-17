@@ -51,7 +51,7 @@ public extension MDMClientCommand {
                         case .payload:
                             currentPayloads.append(subDict)
                         case .none:
-                            Swift.print("No profile level set, will NOT save returned dictionary...")
+                            break
                         }
                     }
 
@@ -67,7 +67,7 @@ public extension MDMClientCommand {
                         case .payload:
                             currentPayloads.append(subDict)
                         case .none:
-                            Swift.print("No profile level set, will NOT save returned dictionary...")
+                            break
                         }
                     }
 

@@ -40,16 +40,14 @@ extension InstalledProfiles {
         for certRefDict in certRef {
             guard let uuid = certRefDict[InstalledProfileKey.payloadUUID.rawValue] as? String else {
 
-                // FIXME: Proper Logging
-                Swift.print("Found no \(InstalledProfileKey.payloadUUID.rawValue) key in profile: \(profile)")
+                InstalledProfiles.logger.warning("Found no \(InstalledProfileKey.payloadUUID.rawValue) key in profile: \(profile)")
                 continue
             }
 
             // Get the index for a profile with the same uuid
             guard let index = updatedPayloadContent.firstIndex(where: { $0[InstalledProfileKey.payloadUUID.rawValue] as? String == uuid }) else {
 
-                // FIXME: Proper Logging
-                Swift.print("Found no payload with PayloadUUID: \(uuid)")
+                InstalledProfiles.logger.warning("Found no payload with PayloadUUID: \(uuid)")
                 continue
             }
 
@@ -62,8 +60,7 @@ extension InstalledProfiles {
             if let certRefData = (certRefDict[InstalledProfileKey.certificate.rawValue] as? [Data])?.first {
                 guard let resolvedCertData = KeychainQuery.certificateData(forPersistentRef: certRefData) else {
 
-                    // FIXME: Proper Logging
-                    Swift.print("Failed to get certificate from certRefData: \(certRefData)")
+                    InstalledProfiles.logger.warning("Failed to get certificate from certRefData: \(certRefData)")
                     continue
                 }
                 certData = resolvedCertData
@@ -72,15 +69,13 @@ extension InstalledProfiles {
             } else if certRefDict[InstalledProfileKey.identityCertificate.rawValue] != nil || certRefDict[InstalledProfileKey.identityPrivateKey.rawValue] != nil {
                 guard let resolvedCertData = KeychainQuery.identity(forPersistentRefDict: certRefDict) else {
 
-                    // FIXME: Proper Logging
-                    Swift.print("Failed to get identity certificate from certRefDict: \(certRefDict)")
+                    InstalledProfiles.logger.warning("Failed to get identity certificate from certRefDict: \(certRefDict)")
                     continue
                 }
                 certData = resolvedCertData
             } else {
 
-                // FIXME: Proper Logging
-                Swift.print("Unknown content in \(InstalledProfileKey.persistentCertificateRef.rawValue) dict: \(certRefDict)")
+                InstalledProfiles.logger.warning("Unknown content in \(InstalledProfileKey.persistentCertificateRef.rawValue) dict: \(certRefDict)")
                 continue
             }
 

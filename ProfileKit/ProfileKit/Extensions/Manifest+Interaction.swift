@@ -19,7 +19,7 @@ public extension Manifest {
 
             do {
                 let value = try container.decode(String.self)
-                
+
                 self = Manifest.Interaction(rawValue: value) ?? .undefined
             } catch {
                 self = .undefined

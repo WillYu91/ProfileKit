@@ -38,8 +38,7 @@ extension ManifestController {
             let rootURL = try self.directory(forRoot: root)
             return rootURL.appendingPathComponent(type.rawValue, isDirectory: true)
         } catch {
-            // FIXME: Proper Error
-            Swift.print("Failed to get root URL for \(root)")
+            ManifestController.logger.error("Failed to get root URL for \(String(describing: root))")
 
             throw error
         }

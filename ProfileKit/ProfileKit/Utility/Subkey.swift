@@ -52,11 +52,11 @@ public enum Subkey: Codable {
             return
         }
 
-        if let double = try? container.decode(Double.self){
+        if let double = try? container.decode(Double.self) {
             self = .double(double)
             return
         }
-        
+
         if let float = try? container.decode(Float.self) {
             self = .float(float)
             return
@@ -74,7 +74,7 @@ public enum Subkey: Codable {
 
         throw SubkeyError.missingValue
     }
-    
+
     public var value: Any? {
         switch self {
         case .array(let array):
@@ -96,7 +96,5 @@ public enum Subkey: Codable {
         case .string(let string):
             return string
         }
-
-        return nil
     }
 }

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1772D7272B2E792C005DB020 /* Logging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1772D7262B2E792C005DB020 /* Logging.swift */; };
+		1772D7282B2E792C005DB020 /* Logging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1772D7262B2E792C005DB020 /* Logging.swift */; };
 		17CC24AC2B2829240091B5FE /* Subkey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17CC24AB2B2829240091B5FE /* Subkey.swift */; };
 		17CC24AD2B2829240091B5FE /* Subkey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17CC24AB2B2829240091B5FE /* Subkey.swift */; };
 		17E3EC1E2B240A6000B6EA7B /* ProfileKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E3EC1D2B240A6000B6EA7B /* ProfileKitTests.swift */; };
@@ -64,6 +66,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1772D7262B2E792C005DB020 /* Logging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logging.swift; sourceTree = "<group>"; };
 		17CC24AB2B2829240091B5FE /* Subkey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Subkey.swift; sourceTree = "<group>"; };
 		17E3EC1B2B240A6000B6EA7B /* ProfileKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ProfileKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		17E3EC1D2B240A6000B6EA7B /* ProfileKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileKitTests.swift; sourceTree = "<group>"; };
@@ -267,6 +270,7 @@
 				53C03A442276397D004FC211 /* NSDictionaryParser.swift */,
 				53A9EA5522B7A44100D26A79 /* PreferenceKey.swift */,
 				17CC24AB2B2829240091B5FE /* Subkey.swift */,
+				1772D7262B2E792C005DB020 /* Logging.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -452,6 +456,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				17CC24AD2B2829240091B5FE /* Subkey.swift in Sources */,
+				1772D7282B2E792C005DB020 /* Logging.swift in Sources */,
 				17E3EC1E2B240A6000B6EA7B /* ProfileKitTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -466,6 +471,7 @@
 				534B032A2274606C008641DA /* Payload.swift in Sources */,
 				534E7D0C22771B1F00AB37F9 /* Dictionary.swift in Sources */,
 				53A9EA5622B7A44100D26A79 /* PreferenceKey.swift in Sources */,
+				1772D7272B2E792C005DB020 /* Logging.swift in Sources */,
 				534B03372274638B008641DA /* ProfileSigner.swift in Sources */,
 				534B033B22746B30008641DA /* KeyedDecodingContainerProtocol.swift in Sources */,
 				534B033422746118008641DA /* InstalledProfile.swift in Sources */,

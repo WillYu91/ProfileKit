@@ -23,7 +23,7 @@ public extension ProfilesCommand {
 
         // Convert the output to a dictionary
         guard let plist = try Command.plistFromOutputStringData(data) as? [String: [[String: Any]]] else {
-            Swift.print("Failed to decode output from \(self.path): \(String(describing: String(data: data, encoding: .utf8)))")
+            ProfilesCommand.logger.error("Failed to decode output from \(self.path): \(String(describing: String(data: data, encoding: .utf8)))")
             return installedProfiles
         }
 
@@ -80,8 +80,8 @@ public extension ProfilesCommand {
             let keyEnum = keyType.init(rawValue: key)
             let keyString = keyEnum?.rawValue ?? key.trimmingCharacters(in: CharacterSet(charactersIn: "\""))
 
-            // Log any key that's not available in the key enym
-            if keyEnum == nil { Swift.print("No case in \(keyType.self) for: \(keyString)") }
+            // Log any key that's not available in the key enum
+            if keyEnum == nil { ProfilesCommand.logger.warning("No case in \(keyType.self) for: \(keyString)") }
 
             // Don't update keys for PayloadContent
             if key == InstalledProfileKey.payloadContent.rawValue {
