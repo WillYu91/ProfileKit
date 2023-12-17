@@ -7,11 +7,14 @@
 //
 
 import Foundation
+import OSLog
 
 internal class ManifestController {
 
     // MARK: -
     // MARK: Static Variables
+
+    internal static let logger = Logging.Logger(ManifestController.self)
 
     // MARK: -
     // MARK: Required Variables
@@ -23,27 +26,31 @@ internal class ManifestController {
     // MARK: Initialization
 
     init(category: Manifest.Category) {
-        Swift.print("Initializing manifest controller for category: \(category)")
+        ManifestController.logger.info("Initializing manifest controller for category: \(category.rawValue)")
         self.category = category
-        do {
-            try self.updateManifests()
-        } catch {
-            // FIXME: Proper Error
-            Swift.print("Error: \(error)")
-        }
+        self.updateManifests()
     }
 
     // MARK: -
     // MARK: Update Manifests
 
-    func updateManifests() throws {
-        Swift.print("Updating manifests for controller with category: \(category)")
+    func updateManifests() {
+        ManifestController.logger.info("Updating manifests for controller with category: \(self.category.rawValue))")
+
         var updatedManifests = Set<Manifest>()
         for directoryRoot in ManifestController.DirectoryRoot.allCases {
-            Swift.print("Getting manifest for directory root: \(directoryRoot)")
-            guard let directoryURL = try self.directory(forType: .manifests, root: directoryRoot, create: false) else { continue }
-            try self.addManifests(fromURL: directoryURL, to: &updatedManifests)
+            do {
+                ManifestController.logger.info("Getting manifests for directory root: \(String(describing: directoryRoot))")
+
+                let directoryURL = try self.directory(forType: .manifests, root: directoryRoot, create: false)
+                  try self.addManifests(fromURL: directoryURL, to: &updatedManifests)
+            } catch {
+                ManifestController.logger.error("Caught exception while updating manifests: \(error)")
+
+                continue
+            }
         }
+
         self.manifests = updatedManifests
     }
 
@@ -52,14 +59,14 @@ internal class ManifestController {
         for manifestURL in manifestURLs.filter({ $0.pathExtension == "plist" }) {
             do {
                 let manifestData = try Data(contentsOf: manifestURL)
-                let manifest = try PropertyListDecoder().decode(Manifest.self, from: manifestData)
+                var manifest = try PropertyListDecoder().decode(Manifest.self, from: manifestData)
 
                 // Verify this manifest is supported by this version of the framework
                 guard manifest.formatVersion <= Manifest.formatVersionSupported else {
-                    // FIXME: Proper Logging
-                    Swift.print("Manifest with domain identifier: \(manifest.domainIdentifier) was not included as it's format version was not supported.")
-                    Swift.print("Manifest format version: \(manifest.formatVersion)")
-                    Swift.print("Supported format version: \(Manifest.formatVersionSupported)")
+                    ManifestController.logger.error("Manifest with domain identifier: \(manifest.domainIdentifier) was not included as it's format version was not supported.")
+                    ManifestController.logger.error("Manifest format version: \(manifest.formatVersion)")
+                    ManifestController.logger.error("Supported format version: \(Manifest.formatVersionSupported)")
+
                     continue
                 }
 
@@ -68,10 +75,9 @@ internal class ManifestController {
                     if existingManifest.version < manifest.version || ( existingManifest.version == manifest.version && existingManifest.lastModified < manifest.lastModified ) {
                         manifests.remove(existingManifest)
                     } else {
-                        // FIXME: Proper Logging
-                        Swift.print("A newer version of manifest with domain identifier: \(manifest.domainIdentifier) already exists.")
-                        Swift.print("Manifest url: \(manifestURL)")
-                        Swift.print("Existing manifest url: \(String(describing: existingManifest.manifestURL))")
+                        ManifestController.logger.error("A newer version of manifest with domain identifier: \(manifest.domainIdentifier) already exists.")
+                        ManifestController.logger.error("Manifest url: \(manifestURL)")
+                        ManifestController.logger.error("Existing manifest url: \(existingManifest.manifestURL?.absoluteString ?? "")")
                         continue
                     }
                 }
@@ -80,16 +86,12 @@ internal class ManifestController {
                 manifest.category = self.category
                 manifest.manifestURL = manifestURL
 
-                // Initialize variables
-                manifest.intializeVariables()
-
                 // FIXME: Add Override Here
 
                 manifests.insert(manifest)
             } catch {
-                // FIXME: Proper Logging
-                Swift.print("Error while decoding manifest from url: \(manifestURL)")
-                Swift.print("Error: \(error)")
+                ManifestController.logger.error("Error while decoding manifest from url: \(manifestURL)")
+                ManifestController.logger.error("Error: \(error)")
                 continue
             }
         }

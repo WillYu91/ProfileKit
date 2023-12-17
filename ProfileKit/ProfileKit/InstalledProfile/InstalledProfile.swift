@@ -2,37 +2,62 @@
 //  InstalledProfile.swift
 //  ProfileKit
 //
-//  Created by Erik Berglund.
-//  Copyright © 2019 Erik Berglund. All rights reserved.
+//  Created by Will Yu.
+//  Copyright © 2023 Will Yu. All rights reserved.
 //
 
 import Foundation
 
-public class InstalledProfile: Profile {
+public struct InstalledProfileInternalData: Codable {
 
     // MARK: -
-    // MARK: Variables Static
+    // MARK: Variables Optional
+
+    var installDate: Date?
+    var installedForUID: Int?
+    var installedForUser: String?
+    var verificationState: String?
+}
+
+extension InstalledProfileInternalData {
+    enum CodingKeys: String, CodingKey {
+        case installDate = "InstallDate"
+        case installedForUID = "InstalledForUID"
+        case installedForUser = "InstalledForUser"
+        case verificationState = "VerificationState"
+    }
+}
+
+public struct InstalledProfile: Codable {
 
     // MARK: -
     // MARK: Variables Required
 
     var internalData: InstalledProfileInternalData
+    var payloadContent: [Payload]
+    var payloadIdentifier: String
+    var payloadScope: String
+    var payloadType: String
+    var payloadUUID: String
+    var payloadVersion: Int
 
     // MARK: -
     // MARK: Variables Optional
 
-    // MARK: -
-    // MARK: Initialization
+    var payloadDescription: String?
+    var payloadDisplayName: String?
+}
 
-    required init(from decoder: Decoder) throws {
-
-        // Get the decoder container
-        let container = try decoder.container(keyedBy: InstalledProfileKey.self)
-
-        // Decode Required Values
-        self.internalData = try container.decode(InstalledProfileInternalData.self, forKey: .internalData)
-
-        // Initialize the superclass
-        try super.init(from: decoder)
+extension InstalledProfile {
+    enum CodingKeys: String, CodingKey {
+        case internalData = "InternalData"
+        case payloadContent = "PayloadContent"
+        case payloadDescription = "PayloadDescription"
+        case payloadDisplayName = "PayloadDisplayName"
+        case payloadIdentifier = "PayloadIdentifier"
+        case payloadScope = "PayloadScope"
+        case payloadType = "PayloadType"
+        case payloadUUID = "PayloadUUID"
+        case payloadVersion = "PayloadVersion"
     }
 }

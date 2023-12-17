@@ -9,11 +9,11 @@
 import Foundation
 
 public extension MDMClientCommand {
-    static func installedProfiles() throws -> [String: [[String: Any]]] {
+    static func installedProfiles() async throws -> [String: [[String: Any]]] {
         var installedProfiles = [String: [[String: Any]]]()
 
         // Run the command QueryInstalledProfiles
-        let data = try Command.run(path: self.path, arguments: ["QueryInstalledProfiles"])
+        let data = try await Command.run(path: self.path, arguments: ["QueryInstalledProfiles"])
 
         // Parse the returned data line by line
         if let lineReader = LineReader(data: data) {
@@ -51,7 +51,7 @@ public extension MDMClientCommand {
                         case .payload:
                             currentPayloads.append(subDict)
                         case .none:
-                            Swift.print("No profile level set, will NOT save returned dictionary...")
+                            break
                         }
                     }
 
@@ -67,7 +67,7 @@ public extension MDMClientCommand {
                         case .payload:
                             currentPayloads.append(subDict)
                         case .none:
-                            Swift.print("No profile level set, will NOT save returned dictionary...")
+                            break
                         }
                     }
 
@@ -79,7 +79,7 @@ public extension MDMClientCommand {
 
                     // Save the current payloads
                     if !currentPayloads.isEmpty {
-                        currentProfile[ProfileKey.payloadContent.rawValue] = currentPayloads
+                        currentProfile[Profile.CodingKeys.payloadContent.rawValue] = currentPayloads
                         currentPayloads = [[String: Any]]()
                     }
 

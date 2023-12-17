@@ -9,22 +9,27 @@
 import Foundation
 
 public class Command {
-    public static func run(path: String, arguments: [String]?) throws -> Data {
-        let task = Process()
-        let stdOutPipe = Pipe()
 
-        task.launchPath = path
-        task.arguments = arguments
-        task.standardOutput = stdOutPipe
+    private static let logger = Logging.Logger(Command.self)
 
-        try task.run()
+    public static func run(path: String, arguments: [String]?) async throws -> Data {
+        return try await Task {
+            let task = Process()
+            let stdOutPipe = Pipe()
 
-        return stdOutPipe.fileHandleForReading.readDataToEndOfFile()
+            task.launchPath = path
+            task.arguments = arguments
+            task.standardOutput = stdOutPipe
+
+            try task.run()
+
+            return stdOutPipe.fileHandleForReading.readDataToEndOfFile()
+        }.value
     }
 
     public static func plistFromOutputStringData(_ data: Data) throws -> [String: Any]? {
         guard let string = String(data: data, encoding: .utf8) else {
-            Swift.print("Failed to get string from command output")
+            Command.logger.error("Failed to get string from command output")
             return nil
         }
 
@@ -44,7 +49,7 @@ public class Command {
 
         // Convert the output to a dictionary
         guard let plist = try PropertyListSerialization.propertyList(from: plistData, format: nil) as? [String: Any] else {
-            Swift.print("Failed to decode plist string \(plistScannerString))")
+            Command.logger.error("Failed to decode plist string \(plistScannerString))")
             return nil
         }
 

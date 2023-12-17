@@ -30,7 +30,6 @@ extension Dictionary where Key == String {
     public func valueForKeyPath(keyPath: String) -> Any? {
         var keys = keyPath.components(separatedBy: ".")
         guard let first = keys.first else {
-            Swift.print("Unable to use string as key on type: \(Key.self)")
             return nil
         }
         guard let value = self[first] else {

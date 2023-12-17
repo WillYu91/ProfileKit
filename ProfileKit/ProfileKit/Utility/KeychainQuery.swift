@@ -10,6 +10,8 @@ import Foundation
 
 internal struct KeychainQuery {
 
+    private static let logger = Logging.Logger(KeychainQuery.self)
+
     /// Return the first keychain item matching the persistentRef
     private static func keychainItem(withPersistentRef persistentRef: Data) -> AnyObject? {
         let query = [ kSecValuePersistentRef as String: persistentRef,
@@ -26,12 +28,12 @@ internal struct KeychainQuery {
 
         guard osStatus == errSecSuccess else {
             let osStatusString = String(SecCopyErrorMessageString(osStatus, nil) ?? "")
-            Swift.print("Error when getting keychain item from ref: \(osStatusString)")
+            KeychainQuery.logger.error("Error when getting keychain item from ref: \(osStatusString)")
             return nil
         }
 
         guard let resultDict = queryResult as? [String: AnyObject] else {
-            Swift.print("Error when getting query result items for code signing identity from ref")
+            KeychainQuery.logger.error("Error when getting query result items for code signing identity from ref")
             return nil
         }
 
@@ -41,12 +43,12 @@ internal struct KeychainQuery {
     /// Return the first certificate matching the persistentRef
     static func certificate(forPersistentRef persistentRef: Data) -> SecCertificate? {
         guard let value = self.keychainItem(withPersistentRef: persistentRef)  else {
-            Swift.print("Failed to get keychain item for persistent ref: \(persistentRef)")
+            KeychainQuery.logger.error("Failed to get keychain item for persistent ref: \(persistentRef)")
             return nil
         }
 
         guard CFGetTypeID(value) == SecCertificateGetTypeID() else {
-            Swift.print("Value returned for query was of an unknown type: \(CFGetTypeID(value))")
+            KeychainQuery.logger.error("Value returned for query was of an unknown type: \(CFGetTypeID(value))")
             return nil
         }
 
@@ -77,12 +79,12 @@ internal struct KeychainQuery {
 
         guard osStatus == errSecSuccess else {
             let osStatusString = String(SecCopyErrorMessageString(osStatus, nil) ?? "")
-            Swift.print("Error when creating SecIdentity with certificate: \(osStatusString)")
+            KeychainQuery.logger.error("Error when creating SecIdentity with certificate: \(osStatusString)")
             return nil
         }
 
         guard let identity = secIdentity else {
-            Swift.print("Error when getting created identity")
+            KeychainQuery.logger.error("Error when getting created identity")
             return nil
         }
 
@@ -102,7 +104,7 @@ internal struct KeychainQuery {
 
         guard osStatus == errSecSuccess else {
             let osStatusString = String(SecCopyErrorMessageString(osStatus, nil) ?? "")
-            Swift.print("Error when exporting SecIdentity to data: \(osStatusString)")
+            KeychainQuery.logger.error("Error when exporting SecIdentity to data: \(osStatusString)")
             return nil
         }
 

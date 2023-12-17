@@ -23,10 +23,9 @@ extension ManifestController {
         case iconOverrides = "IconOverrides"
     }
 
-    func directory(forType type: ManifestController.DirectoryType, root: ManifestController.DirectoryRoot, create: Bool) throws -> URL? {
-        guard
-            let directoryName = self.directoryName,
-            let typeURL = try directory(forType: type, root: root) else { return nil }
+    func directory(forType type: ManifestController.DirectoryType, root: ManifestController.DirectoryRoot, create: Bool) throws -> URL {
+        guard let directoryName = self.directoryName else { throw ManifestsError.badPath }
+        let typeURL = try directory(forType: type, root: root)
         let directoryURL = typeURL.appendingPathComponent(directoryName, isDirectory: true)
         if create {
             try FileManager.default.createDirectoryIfNotExists(at: directoryURL, withIntermediateDirectories: true)
@@ -34,22 +33,29 @@ extension ManifestController {
         return directoryURL
     }
 
-    private func directory(forType type: ManifestController.DirectoryType, root: ManifestController.DirectoryRoot) throws -> URL? {
+    private func directory(forType type: ManifestController.DirectoryType, root: ManifestController.DirectoryRoot) throws -> URL {
         do {
             let rootURL = try self.directory(forRoot: root)
-            return rootURL?.appendingPathComponent(type.rawValue, isDirectory: true)
+            return rootURL.appendingPathComponent(type.rawValue, isDirectory: true)
         } catch {
-            // FIXME: Proper Error
-            Swift.print("Failed to get root URL for \(root)")
+            ManifestController.logger.error("Failed to get root URL for \(String(describing: root))")
+
+            throw error
         }
-        return nil
     }
 
-    private func directory(forRoot root: ManifestController.DirectoryRoot) throws -> URL? {
+    private func directory(forRoot root: ManifestController.DirectoryRoot) throws -> URL {
         switch root {
         case .applicationSupport:
+
+            var domain = FileManager.SearchPathDomainMask.localDomainMask
+
+            if getuid() != 0 {
+                domain = FileManager.SearchPathDomainMask.userDomainMask
+            }
+
             let applicationSupportURL = try FileManager.default.url(for: .applicationSupportDirectory,
-                                                                    in: .userDomainMask,
+                                                                    in: domain,
                                                                     appropriateFor: nil,
                                                                     create: false)
             return applicationSupportURL.appendingPathComponent("ProfilePayloads", isDirectory: true)
@@ -60,7 +66,8 @@ extension ManifestController {
                 return URL(fileURLWithPath: customPath)
             }
         }
-        return nil
+
+        throw ManifestsError.badPath
     }
 
     var directoryName: String? {

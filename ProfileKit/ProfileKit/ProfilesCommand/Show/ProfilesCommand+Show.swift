@@ -9,7 +9,7 @@
 import Foundation
 
 public extension ProfilesCommand {
-    static func show() throws -> [String: [[String: Any]]] {
+    static func show() async throws -> [String: [[String: Any]]] {
         var installedProfiles = [String: [[String: Any]]]()
 
         // Set the default arguments for the command
@@ -19,11 +19,11 @@ public extension ProfilesCommand {
         if getuid() == 0 { args.append("--all") }
 
         // Run the command show
-        let data = try Command.run(path: self.path, arguments: args)
+        let data = try await Command.run(path: self.path, arguments: args)
 
         // Convert the output to a dictionary
         guard let plist = try Command.plistFromOutputStringData(data) as? [String: [[String: Any]]] else {
-            Swift.print("Failed to decode output from \(self.path): \(String(describing: String(data: data, encoding: .utf8)))")
+            ProfilesCommand.logger.error("Failed to decode output from \(self.path): \(String(describing: String(data: data, encoding: .utf8)))")
             return installedProfiles
         }
 
@@ -80,8 +80,8 @@ public extension ProfilesCommand {
             let keyEnum = keyType.init(rawValue: key)
             let keyString = keyEnum?.rawValue ?? key.trimmingCharacters(in: CharacterSet(charactersIn: "\""))
 
-            // Log any key that's not available in the key enym
-            if keyEnum == nil { Swift.print("No case in \(keyType.self) for: \(keyString)") }
+            // Log any key that's not available in the key enum
+            if keyEnum == nil { ProfilesCommand.logger.warning("No case in \(keyType.self) for: \(keyString)") }
 
             // Don't update keys for PayloadContent
             if key == InstalledProfileKey.payloadContent.rawValue {

@@ -15,6 +15,8 @@ public class Manifests {
 
     public static let shared = Manifests()
 
+    private static let logger = Logging.Logger(Manifests.self)
+
     // MARK: -
     // MARK: Required Variables
 
@@ -33,7 +35,7 @@ public class Manifests {
 
     private init() {}
 
-    public func initialize(categories: Set<Manifest.Category>) {
+    public func loadManifestsFromDisk(categories: Set<Manifest.Category>) async throws {
         for category in categories.subtracting(self.categories) {
             self.manifestControllers.insert(ManifestController(category: category))
         }
@@ -64,8 +66,8 @@ public class Manifests {
             throw ManifestsError.uninitializedCategories(categories)
         }
 
-        try self.manifestControllers.filter({ categories.contains($0.category) }).forEach { manifestController in
-            try manifestController.updateManifests()
+        self.manifestControllers.filter({ categories.contains($0.category) }).forEach { manifestController in
+            manifestController.updateManifests()
         }
     }
 
@@ -80,7 +82,7 @@ public class Manifests {
     // MARK: Get Multiple Manifests
 
     public func manifests(forCategory category: Manifest.Category) throws -> Set<Manifest> {
-        Swift.print("Getting manifests with category: \(category)")
+        Manifests.logger.info("Getting manifests with category: \(String(describing: category))")
         guard
             self.categories.contains(category),
             let manifestController = self.manifestControllers.first(where: { $0.category == category }) else {
@@ -90,12 +92,12 @@ public class Manifests {
     }
 
     public func manifests(forDomain domain: String, category: Manifest.Category) throws -> Set<Manifest> {
-        Swift.print("Getting manifests for domain: \(domain) with category: \(category)")
+        Manifests.logger.info("Getting manifests for domain: \(domain.description) with category: \(category.rawValue)")
         return try self.manifests(forCategory: category).filter { $0.domain == domain }
     }
 
     public func manifests(forDomainIdentifier domainIdentifier: String, category: Manifest.Category) throws -> Set<Manifest> {
-        Swift.print("Getting manifests for domainIdentifier: \(domainIdentifier) with category: \(category)")
+        Manifests.logger.info("Getting manifests for domainIdentifier: \(domainIdentifier) with category: \(category.rawValue)")
         return try self.manifests(forCategory: category).filter { $0.domainIdentifier == domainIdentifier }
     }
 }

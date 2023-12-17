@@ -9,6 +9,9 @@
 import Foundation
 
 public struct NSDictionaryParser {
+
+    private static let logger = Logging.Logger(NSDictionaryParser.self)
+
     static func array<T: RawRepresentable & ProfileKeyProtocol>(forLogRepresentation lines: [String],
                                                                 withKeyType keyType: T.Type,
                                                                 kvSeparator: String.Element = ":") -> [Any]? where T.RawValue == String {
@@ -56,14 +59,14 @@ public struct NSDictionaryParser {
                     if let subDict = self.dictionary(forLogRepresentation: Array(lines[nextIndex...lastIndex]), withKeyType: keyType, kvSeparator: "=") {
                         array.append(subDict)
                     } else {
-                        Swift.print("Failed to parse dictionary in array")
+                        NSDictionaryParser.logger.error("Failed to parse dictionary in array")
                     }
                 case "(":
                     // Extract an array slice for the array and parse it separately
                     if let subArray = self.array(forLogRepresentation: Array(lines[nextIndex...lastIndex]), withKeyType: keyType, kvSeparator: "=") {
                         array.append(subArray)
                     } else {
-                        Swift.print("Failed to parse array in array")
+                        NSDictionaryParser.logger.error("Failed to parse array in array")
                     }
 
                 default:
@@ -106,7 +109,6 @@ public struct NSDictionaryParser {
 
         while index < lines.endIndex {
             let line = lines[index]
-            // Swift.print("dictionary line: \(index): \(line)")
 
             // Split the line in two using the passed kvSeparator
             let lineArray: [Substring]
@@ -124,7 +126,7 @@ public struct NSDictionaryParser {
                 let keyString = keyEnum?.rawValue ?? key.trimmingCharacters(in: CharacterSet(charactersIn: "\""))
 
                 // Log any key that's not available in the key enym
-                if keyEnum == nil { Swift.print("No case in \(keyType.self) for: \(keyString)") }
+                if keyEnum == nil { NSDictionaryParser.logger.error("No case in \(keyType.self) for: \(keyString)") }
 
                 // Check if this is a dictionary or an array
                 if ["{", "("].contains(value) {
@@ -148,14 +150,14 @@ public struct NSDictionaryParser {
                         if let subDict = self.dictionary(forLogRepresentation: Array(lines[nextIndex...lastIndex]), withKeyType: keyType, kvSeparator: "=") {
                             dict[keyString] = subDict
                         } else {
-                            Swift.print("Failed to parse dictionary for key: \(keyString)")
+                            NSDictionaryParser.logger.error("Failed to parse dictionary for key: \(keyString)")
                         }
                     case "(":
                         // Extract an array slice for the array and parse it separately
                         if let subArray = self.array(forLogRepresentation: Array(lines[nextIndex...lastIndex]), withKeyType: keyType, kvSeparator: "=") {
                             dict[keyString] = subArray
                         } else {
-                            Swift.print("Failed to parse array for key: \(keyString)")
+                            NSDictionaryParser.logger.error("Failed to parse array for key: \(keyString)")
                         }
 
                     default:

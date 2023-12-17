@@ -1,5 +1,5 @@
 //
-//  ManifestSubkey+Require.swift
+//  Subkey+Require.swift
 //  ProfileKit
 //
 //  Created by Erik Berglund.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-public extension ManifestSubkey {
+public extension Subkey {
     enum Require: String, Codable {
         case always
         case alwaysNested = "always-nested"
@@ -16,7 +16,7 @@ public extension ManifestSubkey {
         case optional
 
         init(keyValue: String) {
-            self = ManifestSubkey.Require(rawValue: keyValue) ?? .optional
+            self = Subkey.Require(rawValue: keyValue) ?? .optional
         }
     }
 }

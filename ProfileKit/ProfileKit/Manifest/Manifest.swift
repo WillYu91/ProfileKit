@@ -2,31 +2,25 @@
 //  Manifest.swift
 //  ProfileKit
 //
-//  Created by Erik Berglund.
-//  Copyright © 2019 Erik Berglund. All rights reserved.
+//  Created by Will Yu.
+//  Copyright © 2023 Will Yu. All rights reserved.
 //
 
 import Foundation
 
-public class Manifest {
+public struct Manifest: Codable {
 
-    // MARK: -
-    // MARK: Variables Static
-
-    public static let formatVersionSupported = 5
+    static public let formatVersionSupported = 5
 
     // MARK: -
     // MARK: Variables Required
 
     public var description: String
     public var domain: String
-    public var domainIdentifier: String
     public var formatVersion: Int
-    public var interaction: Manifest.Interaction
     public var lastModified: Date
     public var platforms: [String]
     public var title: String
-    public var unique: Bool
     public var version: Int
 
     // MARK: -
@@ -39,82 +33,109 @@ public class Manifest {
     public var iOSDeprecated: String?
     public var iOSMax: String?
     public var iOSMin: String?
-    public var manifest: [String: Any]?
+    public var interaction: Manifest.Interaction? = Manifest.Interaction.undefined
     public var macOSDeprecated: String?
     public var macOSMax: String?
     public var macOSMin: String?
     public var note: String?
     public var override: String?
-    public var requireSupervision = false
-    public var requireUserApprovedMDM = false
+    public var requireSupervision: Bool? = false
+    public var requireUserApprovedMDM: Bool? = false
     public var subdomain: String?
     public var substitutionVariables: [String: [String: String]]?
-    public var subkeys = [ManifestSubkey]()
+    public var subkeys: [ManifestSubkey] = [ManifestSubkey]()
     public var targets: [String]?
     public var tvOSDeprecated: String?
     public var tvOSMax: String?
     public var tvOSMin: String?
+    public var unique: Bool? = false
 
     // MARK: -
-    // MARK: Variables Externally set/Generated
+    // MARK: Variables Externally Set
 
-    public var category: Manifest.Category = .unknown
-    public var hasOverride = false
-    public var manifestDict: [String: Any]?
     public var manifestURL: URL?
-    public var manifestOverride: [String: Any]?
-    public var subkeysPayloadContent = [ManifestSubkey]()
+    public var category: Category?
 
     // MARK: -
-    // MARK: Initialization
+    // MARK: Cached Computed Variables
 
-    public required init(from decoder: Decoder) throws {
-
-        // Get the decoder container
-        let container = try decoder.container(keyedBy: ManifestKey.self)
-
-        // Decode Required Values
-        self.description = try container.decode(String.self, forKey: .description)
-        self.domain = try container.decode(String.self, forKey: .domain)
-        self.formatVersion = try container.decodeIfPresent(Int.self, forKey: .formatVersion) ?? 1
-        self.interaction = try container.decode(Manifest.Interaction.self, forKey: .interaction)
-        self.lastModified = try container.decode(Date.self, forKey: .lastModified)
-        self.platforms = try container.decode([String].self, forKey: .platforms)
-        self.title = try container.decode(String.self, forKey: .title)
-        self.unique = try container.decode(Bool.self, forKey: .unique)
-        self.version = try container.decode(Int.self, forKey: .version)
-
-        // Decode Optional Values needed for custom Required Values
-        if let subdomain = try container.decodeIfPresent(String.self, forKey: .subdomain) {
-            self.subdomain = subdomain
-            self.domainIdentifier = self.domain + "-" + subdomain
-        } else {
-            self.domainIdentifier = self.domain
-        }
-
-        // Decode Optional Values
-        try self.decode(from: container)
+    private class CachedMetadata {
+        var subKeysPayloadContent: [ManifestSubkey]?
+        var domainIdentifier: String?
     }
 
-    public func intializeVariables() {
+    private var cachedMetadata = CachedMetadata()
 
-        // Add all PayloadContent subkeys to a separate array
-        self.subkeysPayloadContent = self.subkeys.filter({ !Payload.commonKeys.contains($0.name) })
+    public var domainIdentifier: String {
 
-        // Update isSinglePayloadContent on any subkey that is the only payload content subkey.
-        if self.subkeysPayloadContent.count == 1, let subkey = self.subkeysPayloadContent.first {
-            subkey.isSinglePayloadContent = true
+        if let domainIdentifier = cachedMetadata.domainIdentifier {
+            return domainIdentifier
         }
+
+        guard let subdomain = self.subdomain else {
+            self.cachedMetadata.domainIdentifier = self.domain
+
+            return self.cachedMetadata.domainIdentifier!
+        }
+
+        self.cachedMetadata.domainIdentifier = subdomain + "-" + self.domain
+
+        return self.cachedMetadata.domainIdentifier!
+    }
+
+    public var subKeysPayloadContent: [ManifestSubkey] {
+
+        if let subKeysPayloadContent = cachedMetadata.subKeysPayloadContent {
+            return subKeysPayloadContent
+        }
+
+        cachedMetadata.subKeysPayloadContent = self.subkeys.filter({ !Payload.commonKeys.contains($0.name ?? "") })
+
+        return cachedMetadata.subKeysPayloadContent!
+    }
+}
+
+extension Manifest {
+    enum CodingKeys: String, CodingKey {
+        case appURL = "pfm_app_url"
+        case description = "pfm_description"
+        case descriptionReference = "pfm_description_reference"
+        case documentationURL = "pfm_documentation_url"
+        case domain = "pfm_domain"
+        case formatVersion = "pfm_format_version"
+        case icon = "pfm_icon"
+        case interaction = "pfm_interaction"
+        case iOSDeprecated = "pfm_ios_deprecated"
+        case iOSMax = "pfm_ios_max"
+        case iOSMin = "pfm_ios_min"
+        case lastModified = "pfm_last_modified"
+        case macOSDeprecated = "pfm_macos_deprecated"
+        case macOSMax = "pfm_macos_max"
+        case macOSMin = "pfm_macos_min"
+        case note = "pfm_note"
+        case platforms = "pfm_platforms"
+        case requireSupervision = "pfm_supervised"
+        case requireUserApprovedMDM = "pfm_user_approved"
+        case subdomain = "pfm_subdomain"
+        case subkeys = "pfm_subkeys"
+        case substitutionVariables = "pfm_substitution_variables"
+        case targets = "pfm_targets"
+        case title = "pfm_title"
+        case tvOSDeprecated = "pfm_tvos_deprecated"
+        case tvOSMax = "pfm_tvos_max"
+        case tvOSMin = "pfm_tvos_min"
+        case unique = "pfm_unique"
+        case version = "pfm_version"
     }
 }
 
 extension Manifest: Hashable {
     public static func == (lhs: Manifest, rhs: Manifest) -> Bool {
-        return lhs.domainIdentifier == rhs.domainIdentifier && rhs.category == lhs.category
+        return lhs.subdomain == rhs.subdomain && lhs.domain == rhs.domain
     }
 
     public func hash(into hasher: inout Hasher) {
-        hasher.combine(category)
-        hasher.combine(domainIdentifier)
+        hasher.combine(subdomain)
+        hasher.combine(domain)
     }
 }
