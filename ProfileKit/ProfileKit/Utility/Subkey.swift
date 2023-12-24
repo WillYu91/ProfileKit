@@ -10,6 +10,8 @@ import Foundation
 
 public enum Subkey: Codable {
 
+    private static let logger = Logging.Logger(Subkey.self)
+
     case array([Subkey])
     case bool(Bool)
     case date(Date)
@@ -96,5 +98,32 @@ public enum Subkey: Codable {
         case .string(let string):
             return string
         }
+    }
+}
+
+extension Subkey: Hashable {
+    public func hash(into hasher: inout Hasher) {
+        switch self {
+        case .array(let array):
+            hasher.combine(array)
+        case .bool(let bool):
+            hasher.combine(bool)
+        case .data(let data):
+            hasher.combine(data)
+        case .date(let date):
+            hasher.combine(date)
+        case .dictionary(let dictionary):
+            hasher.combine(dictionary)
+        case .double(let double):
+            hasher.combine(double)
+        case .float(let float):
+            hasher.combine(float)
+        case .integer(let integer):
+            hasher.combine(integer)
+        case .string(let string):
+            hasher.combine(string)
+        }
+
+        Subkey.logger.error("Unable to hash Subkey: Unknown type")
     }
 }
