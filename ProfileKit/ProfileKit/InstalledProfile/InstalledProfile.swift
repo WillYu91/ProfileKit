@@ -61,3 +61,17 @@ extension InstalledProfile {
         case payloadVersion = "PayloadVersion"
     }
 }
+
+// MARK: -
+// MARK: Hashable
+
+extension InstalledProfile: Hashable {
+    public static func == (lhs: InstalledProfile, rhs: InstalledProfile) -> Bool {
+        return lhs.payloadIdentifier == rhs.payloadIdentifier && lhs.payloadUUID == rhs.payloadUUID
+    }
+
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(payloadIdentifier)
+        hasher.combine(payloadUUID)
+    }
+}

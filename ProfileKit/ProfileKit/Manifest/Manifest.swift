@@ -129,6 +129,9 @@ extension Manifest {
     }
 }
 
+// MARK: -
+// MARK: Hashable
+
 extension Manifest: Hashable {
     public static func == (lhs: Manifest, rhs: Manifest) -> Bool {
         return lhs.subdomain == rhs.subdomain && lhs.domain == rhs.domain

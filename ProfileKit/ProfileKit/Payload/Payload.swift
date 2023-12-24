@@ -50,3 +50,17 @@ extension Payload {
         case payloadVersion = "PayloadVersion"
     }
 }
+
+// MARK: -
+// MARK: Hashable
+
+extension Payload: Hashable {
+    public static func == (lhs: Payload, rhs: Payload) -> Bool {
+        return lhs.payloadIdentifier == rhs.payloadIdentifier && lhs.payloadUUID == rhs.payloadUUID
+    }
+
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(payloadIdentifier)
+        hasher.combine(payloadUUID)
+    }
+}

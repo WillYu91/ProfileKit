@@ -64,3 +64,17 @@ extension Profile {
             case targetDeviceType = "TargetDeviceType"
         }
 }
+
+// MARK: -
+// MARK: Hashable
+
+extension Profile: Hashable {
+    public static func == (lhs: Profile, rhs: Profile) -> Bool {
+        return lhs.payloadIdentifier == rhs.payloadIdentifier && lhs.payloadUUID == rhs.payloadUUID
+    }
+
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(payloadIdentifier)
+        hasher.combine(payloadUUID)
+    }
+}
