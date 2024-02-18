@@ -123,7 +123,5 @@ extension Subkey: Hashable {
         case .string(let string):
             hasher.combine(string)
         }
-
-        Subkey.logger.error("Unable to hash Subkey: Unknown type")
     }
 }
