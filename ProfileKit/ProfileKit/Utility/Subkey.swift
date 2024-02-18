@@ -21,7 +21,6 @@ public enum Subkey: Codable {
     case float(Float)
     case integer(Int)
     case string(String)
-    case empty
 
     enum SubkeyError: Error {
         case missingValue
@@ -98,9 +97,6 @@ public enum Subkey: Codable {
             return integer
         case .string(let string):
             return string
-        case .empty:
-            return nil
-        }
     }
 }
 
@@ -125,8 +121,5 @@ extension Subkey: Hashable {
             hasher.combine(integer)
         case .string(let string):
             hasher.combine(string)
-        case .empty:
-            return
-        }
     }
 }
