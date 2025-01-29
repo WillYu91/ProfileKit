@@ -77,7 +77,7 @@ public enum Subkey: Codable {
 
         throw SubkeyError.missingValue
     }
-    
+
     public static var Empty: Subkey {
         return Subkey.empty
     }

@@ -13,6 +13,8 @@ public extension Manifest {
         case unknown
         case applePayload
         case applePreference
+        case applicationPreference
+        case developerPreference
         case preference
         case custom
 
