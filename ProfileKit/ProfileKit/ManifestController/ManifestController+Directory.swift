@@ -23,7 +23,7 @@ extension ManifestController {
         case iconOverrides = "IconOverrides"
     }
 
-    func directory(forType type: ManifestController.DirectoryType, root: ManifestController.DirectoryRoot, create: Bool) throws -> URL {
+    public func directory(forType type: ManifestController.DirectoryType, root: ManifestController.DirectoryRoot, create: Bool) throws -> URL {
         guard let directoryName = self.directoryName else { throw ManifestsError.badPath }
         let typeURL = try directory(forType: type, root: root)
         let directoryURL = typeURL.appendingPathComponent(directoryName, isDirectory: true)
@@ -75,10 +75,14 @@ extension ManifestController {
         case .applePayload:
             return "ManifestsApple"
         case .applePreference:
-            return ""
-        case .custom:
-            return ""
+            return "ManagedPreferencesApple"
+        case .applicationPreference:
+            return "ManagedPreferencesApplications"
+        case .developerPreference:
+            return "ManagedPreferencesDeveloper"
         case .preference:
+            return "Preferences"
+        case .custom:
             return ""
         case .unknown:
             return nil
