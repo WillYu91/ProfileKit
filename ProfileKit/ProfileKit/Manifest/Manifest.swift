@@ -127,6 +127,11 @@ extension Manifest {
         case tvOSMin = "pfm_tvos_min"
         case unique = "pfm_unique"
         case version = "pfm_version"
+        
+        // Dynamically set values
+        case iconPath
+        case manifestURL
+        case category
     }
 }
 
