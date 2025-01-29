@@ -55,6 +55,7 @@ public struct Manifest: Codable {
 
     public var manifestURL: URL?
     public var category: Category?
+    public var iconPath: URL?
 
     // MARK: -
     // MARK: Cached Computed Variables

@@ -85,6 +85,7 @@ internal class ManifestController {
                 // Add external information to manifest
                 manifest.category = self.category
                 manifest.manifestURL = manifestURL
+                manifest.iconPath = try ManifestController.directory(forType: .icons, root: .applicationSupport).appending(component: ManifestController.directoryName(forCategory: self.category) ?? "").appending(component: manifest.domainIdentifier)
 
                 // FIXME: Add Override Here
 

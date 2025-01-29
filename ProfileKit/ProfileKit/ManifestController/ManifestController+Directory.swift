@@ -23,9 +23,9 @@ extension ManifestController {
         case iconOverrides = "IconOverrides"
     }
 
-    public func directory(forType type: ManifestController.DirectoryType, root: ManifestController.DirectoryRoot, create: Bool) throws -> URL {
-        guard let directoryName = self.directoryName else { throw ManifestsError.badPath }
-        let typeURL = try directory(forType: type, root: root)
+    func directory(forType type: ManifestController.DirectoryType, root: ManifestController.DirectoryRoot, create: Bool) throws -> URL {
+        guard let directoryName = ManifestController.directoryName(forCategory: self.category) else { throw ManifestsError.badPath }
+        let typeURL = try ManifestController.directory(forType: type, root: root)
         let directoryURL = typeURL.appendingPathComponent(directoryName, isDirectory: true)
         if create {
             try FileManager.default.createDirectoryIfNotExists(at: directoryURL, withIntermediateDirectories: true)
@@ -33,9 +33,9 @@ extension ManifestController {
         return directoryURL
     }
 
-    private func directory(forType type: ManifestController.DirectoryType, root: ManifestController.DirectoryRoot) throws -> URL {
+    static func directory(forType type: ManifestController.DirectoryType, root: ManifestController.DirectoryRoot) throws -> URL {
         do {
-            let rootURL = try self.directory(forRoot: root)
+            let rootURL = try ManifestController.directory(forRoot: root)
             return rootURL.appendingPathComponent(type.rawValue, isDirectory: true)
         } catch {
             ManifestController.logger.error("Failed to get root URL for \(String(describing: root))")
@@ -44,7 +44,7 @@ extension ManifestController {
         }
     }
 
-    private func directory(forRoot root: ManifestController.DirectoryRoot) throws -> URL {
+    static func directory(forRoot root: ManifestController.DirectoryRoot) throws -> URL {
         switch root {
         case .applicationSupport:
 
@@ -70,8 +70,8 @@ extension ManifestController {
         throw ManifestsError.badPath
     }
 
-    var directoryName: String? {
-        switch self.category {
+    static public func directoryName(forCategory category: Manifest.Category) -> String? {
+        switch category {
         case .applePayload:
             return "ManifestsApple"
         case .applePreference:
