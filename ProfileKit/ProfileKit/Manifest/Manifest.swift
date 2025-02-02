@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct Manifest: Codable {
+public struct Manifest: Codable, Comparable, Identifiable {
 
     static public let formatVersionSupported = 5
 
@@ -94,6 +94,19 @@ public struct Manifest: Codable {
 
         return cachedMetadata.subKeysPayloadContent!
     }
+    
+    // MARK: -
+    // MARK: Identifiable
+    
+    public var id: String {
+        domainIdentifier
+    }
+    
+    // MARK: -
+    // MARK: Comparable
+    public static func < (lhs: Manifest, rhs: Manifest) -> Bool {
+        lhs.domainIdentifier < rhs.domainIdentifier
+    }
 }
 
 extension Manifest {
@@ -148,22 +161,3 @@ extension Manifest: Hashable {
         hasher.combine(domain)
     }
 }
-
-// MARK: -
-// MARK: Identifiable
-
-extension Manifest: Identifiable {
-    public var id: String {
-        domainIdentifier
-    }
-}
-
-// MARK: -
-// MARK: Comparable
-
-extension Manifest: Comparable {
-    public static func < (lhs: Manifest, rhs: Manifest) -> Bool {
-        lhs.domainIdentifier < rhs.domainIdentifier
-    }
-}
-
