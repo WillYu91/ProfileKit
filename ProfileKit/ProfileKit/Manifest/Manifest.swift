@@ -153,6 +153,17 @@ extension Manifest: Hashable {
 // MARK: Identifiable
 
 extension Manifest: Identifiable {
-    public var id: String { domainIdentifier }
+    public var id: String {
+        domainIdentifier
+    }
+}
+
+// MARK: -
+// MARK: Comparable
+
+extension Manifest: Comparable {
+    public static func < (lhs: Manifest, rhs: Manifest) -> Bool {
+        lhs.domainIdentifier < rhs.domainIdentifier
+    }
 }
 
