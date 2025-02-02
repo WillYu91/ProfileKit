@@ -148,3 +148,11 @@ extension Manifest: Hashable {
         hasher.combine(domain)
     }
 }
+
+// MARK: -
+// MARK: Identifiable
+
+extension Manifest: Identifiable {
+    public var id: String { domainIdentifier }
+}
+
