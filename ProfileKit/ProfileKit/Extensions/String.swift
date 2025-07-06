@@ -15,7 +15,7 @@ extension String {
     }
 }
 
-extension String: CodingKey {
+extension String: @retroactive CodingKey {
     public var stringValue: String {
         return self
     }

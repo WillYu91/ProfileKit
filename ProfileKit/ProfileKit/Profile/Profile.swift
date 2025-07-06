@@ -78,3 +78,23 @@ extension Profile: Hashable {
         hasher.combine(payloadUUID)
     }
 }
+
+// MARK: -
+// MARK: Public Init
+
+public extension Profile {
+  /// Full initializer for creating a profile in code.
+  init(payloadIdentifier: String,
+       payloadUUID: String = UUID().uuidString,
+       payloadVersion: Int = 1,
+       payloadContent: [Payload] = [])
+  {
+    self.payloadType        = "Configuration"
+    self.payloadIdentifier  = payloadIdentifier
+    self.payloadUUID        = payloadUUID
+    self.payloadVersion     = payloadVersion
+    self.payloadContent     = payloadContent
+      
+    // all optional properties remain nil
+  }
+}
